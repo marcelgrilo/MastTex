@@ -74,7 +74,7 @@ Atualmente, este método, conhecido também como previsão de pequenas áreas (\
 
 Ambas possuem vantagens e desvantagens segundo \citeauthor{willis2002spatial} \cite{willis2002spatial}, como por exemplo, a separação por quadrículas, ilustrada no item 2 da figura, pode produzir melhores resultados, porém pode ser mais complexo obter e processar os dados para formar as regiões. E a separação por regiões apesar de possuir sua separação formada por dados que classificam a região de alguma forma, é mais complexa de ser modelada computacionalmente para análise homogênea, pois suas área são de tamanhos e formas diferentes.
 
-Existem muitos métodos de previsão de pequenas áreas, portanto eles sempre se encaixam em uma das duas categorias (definido por\citeauthor{willis2002spatial} \cite{willis2002spatial} e detalhado por gustavo arango GERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEX), sendo:
+Existem muitos métodos de previsão de pequenas áreas, portanto eles sempre se encaixam em uma das duas categorias (definido por \citeauthor{willis2002spatial} \cite{willis2002spatial} e detalhado por \citeauthor{arango2000thesis} \cite{arango2000thesis}, sendo:
 
 \begin{itemize}
 \item Métodos de ajuste, que considera a curva de tendência do crescimento de períodos passados, ajustando-a através de métodos como mínimos quadrados, média móvel, etc. de modo que os períodos futuros possam ser extrapolados a partir desta curva ajustada.
@@ -83,14 +83,14 @@ Existem muitos métodos de previsão de pequenas áreas, portanto eles sempre se
 
 No caso deste trabalho, o método desenvolvido se aplica principalmente ao primeiro modelo de métodos, apesar de processar os dados obtidos de modo que eles sejam transformados em informações de crescimento de carga residencial durante os períodos, ao processar tais dados, leva-se em consideração como estes dados crescem ao longo dos períodos, de modo que se possa gerar uma curva de tendência e extrapolar uma previsão de períodos futuros. O segundo método é usado apenas inicialmente, ao se ajustar os dados para que eles possam ser normalizado e traduzidos para um mapa de quadrículas, porém não se faz nenhum tipo de previsão ou geração de regras de previsão durante esta etapa de tradução.
 
-Um modelo dinâmico de expansão de cargas é proposto por gustavo arango GERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR, e baseia-se em conceitos de análise locacional, que aplica a teoria dos polos urbanos e se encaixa mais nos métodos baseados no uso da terra (segundo item). Deste modo, ele cria um simulador de expansão de cargas que evolui de forma dinâmica e continua as condições para uma nova unidade de carga. Tal modelo consegue representar a expansão de carga, usando uma adaptação do processo de recozimento simulado que fora especificamente desenvolvido para solucionar o problema. Este trabalho traz uma solução mais genérica, para a previsão de expansão de densidades, seja ela de cargas, populacional, entre outras.
+Um modelo dinâmico de expansão de cargas é proposto por \citeauthor{arango2000thesis}, e baseia-se em conceitos de análise locacional, que aplica a teoria dos polos urbanos e se encaixa mais nos métodos baseados no uso da terra (segundo item). Deste modo, ele cria um simulador de expansão de cargas que evolui de forma dinâmica e continua as condições para uma nova unidade de carga. Tal modelo consegue representar a expansão de carga, usando uma adaptação do processo de recozimento simulado que fora especificamente desenvolvido para solucionar o problema. Este trabalho traz uma solução mais genérica, para a previsão de expansão de densidades, seja ela de cargas, populacional, entre outras.
 
-Uma análise interessante sobre o erro de previsão espacial é desenvolvida por gustavo arango GERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR BIBTEXGERAR, que avalia o erro de previsão espacial considerando as diferenças entre os valores reais e estimados para cada subárea urbana, e traz um exemplo muito bom, que demonstra a preocupação para com a avaliação da imprecisão dos modelos de previsão espacial. No exemplo ele imagina duas regiões, as quais tenham uma magnitude total de cargas iguais, porém distribuídas diferentemente, como mostra a Figura \ref{fig:ErrorDistArango}.
+Uma análise interessante sobre o erro de previsão espacial é desenvolvida por \citeauthor{arango2000thesis}, que avalia o erro de previsão espacial considerando as diferenças entre os valores reais e estimados para cada subárea urbana, e traz um exemplo muito bom, que demonstra a preocupação para com a avaliação da imprecisão dos modelos de previsão espacial. No exemplo ele imagina duas regiões, as quais tenham uma magnitude total de cargas iguais, porém distribuídas diferentemente, como mostra a Figura \ref{fig:ErrorDistArango}.
 
 \begin{figure}[h]
 	\centering	
 	\includegraphics[scale=2]{Figuras/Ilustration-ErrorDistArango.png}
-	\caption{Distribuições distintas do mesmo erro global, detalhado por Arango e definido por \cite{willis1995spatial}}
+	\caption{Distribuições distintas do mesmo erro global, detalhado em \cite{arango2000thesis} e definido por \cite{willis1995spatial}}
 	\label{fig:ErrorDistArango}
 \end{figure}
 
@@ -111,7 +111,7 @@ Esta fórmula de cálculo de distância, quando aplicada a pontos cuja distânci
 \item De 0 a 9 metros para latitudes menores que 30 graus.
 \end{itemize}
 
-Tal gestão de erros é desnecessária quando se usa a distância calculada pela fórmula de Haversine, SHUMAKER, B. P.; SINNOTT, R. W. Astronomical computing: 1. Computing under the open sky. 2. Virtues of the haversine. Sky and telescope, v. 68, p. 158-159, 1984 \cite{shumaker1984astronomical}, que calcula a distância entre dois pontos dispostos na superfície de uma esfera, relacionando os lados aos ângulos de uma esfera triangular. Assim, fazendo o uso de um mapa terrestre esférico, onde tal esfera possui raio \(R\), e tendo a representação dos pontos que se deseja calcular a distância como vetores compostos na forma (Longitude, Latitude), temos que o \(ponto1 = (lon1,lat1)\) e o \(ponto2 = (lon2,lat2)\), calculamos a distância como mostra a expressão:
+Tal gestão de erros é desnecessária quando se usa a distância calculada pela fórmula de Haversine \cite{shumaker1984astronomical}, que calcula a distância entre dois pontos dispostos na superfície de uma esfera, relacionando os lados aos ângulos de uma esfera triangular. Assim, fazendo o uso de um mapa terrestre esférico, onde tal esfera possui raio \(R\), e tendo a representação dos pontos que se deseja calcular a distância como vetores compostos na forma (Longitude, Latitude), temos que o \(ponto1 = (lon1,lat1)\) e o \(ponto2 = (lon2,lat2)\), calculamos a distância como mostra a expressão:
 
 \[dlon = lon2 - lon1\]
 \[dlat = lat2 - lat1\]
@@ -159,7 +159,7 @@ Como o planeta Terra não é representado por uma esfera, mas sim por um esferó
 
 \[R = 6378 - 21 \cdot \sin(lat) \]
 
-Porém, tal aproximação é dependente apenas do valor de latitude, e o raio da curvatura é dependente não só do valor de latitude, mas também da direção, de acordo com SNYDER, John Parr. Map projections--A working manual. US Government Printing Office, 1987 \cite{snyder1987map}. Então, usa-se:
+Porém, tal aproximação é dependente apenas do valor de latitude, e o raio da curvatura é dependente não só do valor de latitude, mas também da direção, de acordo com \cite{snyder1987map}. Então, usa-se:
 
 \[R = \frac{ a \cdot (1 - e^2)}{ (1 - e^2 \cdot \sin^2(lat))^\frac{3}{2}}\]
 
