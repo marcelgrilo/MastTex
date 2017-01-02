@@ -1,0 +1,149 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{v-1.9.6 }
+
+\bibitem[Arango e Lambert-Torres 2004]{arango2004spatial}
+\abntrefinfo{Arango e Lambert-Torres}{ARANGO; LAMBERT-TORRES}{2004}
+{ARANGO, H.~G.; LAMBERT-TORRES, G. Spatial electric load distribution
+  forecasting using simulated annealing.
+\emph{WSEAS Transactions on Systems, World Scientific and Engineering Society
+  Press, ISSN}, p. 1109--2777, 2004.}
+
+\bibitem[Atashpaz-Gargari e Lucas 2007]{atashpaz2007imperialist}
+\abntrefinfo{Atashpaz-Gargari e Lucas}{ATASHPAZ-GARGARI; LUCAS}{2007}
+{ATASHPAZ-GARGARI, E.; LUCAS, C. Imperialist competitive algorithm: an
+  algorithm for optimization inspired by imperialistic competition. In:  IEEE.
+  \emph{2007 IEEE Congress on Evolutionary Computation}. [S.l.], 2007. p.
+  4661--4667.}
+
+\bibitem[Booch 1982]{booch1982object}
+\abntrefinfo{Booch}{BOOCH}{1982}
+{BOOCH, G. Object-oriented design.
+\emph{ACM SIGAda Ada Letters}, ACM, v.~1, n.~3, p. 64--76, 1982.}
+
+\bibitem[Carreno, Rocha e Padilha-Feltrin 2011]{carreno2011cellular}
+\abntrefinfo{Carreno, Rocha e Padilha-Feltrin}{CARRENO; ROCHA;
+  PADILHA-FELTRIN}{2011}
+{CARRENO, E.~M.; ROCHA, R.~M.; PADILHA-FELTRIN, A. A cellular automaton
+  approach to spatial electric load forecasting.
+\emph{IEEE Transactions on Power Systems}, IEEE, v.~26, n.~2, p. 532--540,
+  2011.}
+
+\bibitem[Coad e Yourdon 1991]{coad1991object}
+\abntrefinfo{Coad e Yourdon}{COAD; YOURDON}{1991}
+{COAD, P.; YOURDON, E. \emph{Object-oriented design}. [S.l.]: Yourdon press
+  Englewood Cliffs, NJ, 1991. v.~92.}
+
+\bibitem[Dominguez-Torres 2010]{dominguez2010origin}
+\abntrefinfo{Dominguez-Torres}{DOMINGUEZ-TORRES}{2010}
+{DOMINGUEZ-TORRES, A. \emph{Origin and history of convolution}. 2010.}
+
+\bibitem[Gridded Population of the World, Version 4 (GPWv4): Population Density
+  2016]{SEDAC2016}
+\abntrefinfo{Gridded\ldots}{GRIDDED\ldots}{2016}
+{GRIDDED Population of the World, Version 4 (GPWv4): Population Density. NASA
+  Socioeconomic Data and Applications Center (SEDAC), 2016. Dispon{\'\i}vel em:
+  \url{http://dx.doi.org/10.7927/H4NP22DQ}.}
+
+\bibitem[Longley e Batty 1996]{longley1996spatial}
+\abntrefinfo{Longley e Batty}{LONGLEY; BATTY}{1996}
+{LONGLEY, P.~A.; BATTY, M. \emph{Spatial analysis: modelling in a GIS
+  environment}. [S.l.]: John Wiley \& Sons, 1996.}
+
+\bibitem[Melo, Padilha-Feltrin e Carreno 2015]{melo2015spatial}
+\abntrefinfo{Melo, Padilha-Feltrin e Carreno}{MELO; PADILHA-FELTRIN;
+  CARRENO}{2015}
+{MELO, J.; PADILHA-FELTRIN, A.; CARRENO, E. Spatial pattern recognition of
+  urban sprawl using a geographically weighted regression for spatial electric
+  load forecasting. In:  IEEE. \emph{Intelligent System Application to Power
+  Systems (ISAP), 2015 18th International Conference on}. [S.l.], 2015.
+  p.~1--5.}
+
+\bibitem[Melo, Carreno e Padilha-Feltrin 2012]{melo2012multi}
+\abntrefinfo{Melo, Carreno e Padilha-Feltrin}{MELO; CARRENO;
+  PADILHA-FELTRIN}{2012}
+{MELO, J.~D.; CARRENO, E.~M.; PADILHA-FELTRIN, A. Multi-agent simulation of
+  urban social dynamics for spatial load forecasting.
+\emph{IEEE Transactions on Power Systems}, IEEE, v.~27, n.~4, p. 1870--1878,
+  2012.}
+
+\bibitem[Mita, Kaneko e Hori 2005]{mita2005joint}
+\abntrefinfo{Mita, Kaneko e Hori}{MITA; KANEKO; HORI}{2005}
+{MITA, T.; KANEKO, T.; HORI, O. Joint haar-like features for face detection.
+  In:  IEEE. \emph{Tenth IEEE International Conference on Computer Vision
+  (ICCV'05) Volume 1}. [S.l.], 2005. v.~2, p. 1619--1626.}
+
+\bibitem[Mitchell 1998]{mitchell1998introduction}
+\abntrefinfo{Mitchell}{MITCHELL}{1998}
+{MITCHELL, M. \emph{An introduction to genetic algorithms}. [S.l.]: MIT press,
+  1998.}
+
+\bibitem[Normark 2013]{normark2013overview}
+\abntrefinfo{Normark}{NORMARK}{2013}
+{NORMARK, K. Overview of the four main programming paradigms.
+Aalborg University, 2013.}
+
+\bibitem[Ren, JIANG e SUN 2006]{ren2006rbfnn}
+\abntrefinfo{Ren, JIANG e SUN}{REN; JIANG; SUN}{2006}
+{REN, W.; JIANG, X.-h.; SUN, T.-f. Rbfnn-based prediction of networks security
+  situation [j].
+\emph{Computer Engineering and Applications}, v.~31, p. 136--139, 2006.}
+
+\bibitem[Roche 2011]{jica}
+\abntrefinfo{Roche}{ROCHE}{2011}
+{ROCHE, R. \emph{{github.com/robinroche/jica} Java ICA repository}. 2011.
+  \url{https://github.com/robinroche/jica}.
+Accessed: 2016-11-30.}
+
+\bibitem[Roche et al. 2011]{roche2011imperialist}
+\abntrefinfo{Roche et al.}{ROCHE et al.}{2011}
+{ROCHE, R. et al. Imperialist competitive algorithm for dynamic optimization of
+  economic dispatch in power systems. In:  SPRINGER. \emph{International
+  Conference on Artificial Evolution (Evolution Artificielle)}. [S.l.], 2011.
+  p. 217--228.}
+
+\bibitem[Shumaker e Sinnott 1984]{shumaker1984astronomical}
+\abntrefinfo{Shumaker e Sinnott}{SHUMAKER; SINNOTT}{1984}
+{SHUMAKER, B.; SINNOTT, R. Astronomical computing: 1. computing under the open
+  sky. 2. virtues of the haversine.
+\emph{Sky and telescope}, v.~68, p. 158--159, 1984.}
+
+\bibitem[Snyder 1987]{snyder1987map}
+\abntrefinfo{Snyder}{SNYDER}{1987}
+{SNYDER, J.~P. \emph{Map projections--A working manual}. [S.l.]: US Government
+  Printing Office, 1987. v.~1395.}
+
+\bibitem[Whitehead e Choate 1996]{whitehead1996cooperative}
+\abntrefinfo{Whitehead e Choate}{WHITEHEAD; CHOATE}{1996}
+{WHITEHEAD, B.~A.; CHOATE, T.~D. Cooperative-competitive genetic evolution of
+  radial basis function centers and widths for time series prediction.
+\emph{IEEE transactions on neural networks}, IEEE, v.~7, n.~4, p. 869--880,
+  1996.}
+
+\bibitem[Willis 2002]{willis2002spatial}
+\abntrefinfo{Willis}{WILLIS}{2002}
+{WILLIS, H.~L. \emph{Spatial electric load forecasting}. [S.l.]: CRC Press,
+  2002.}
+
+\bibitem[Willis, Engel e Buri 1995]{willis1995spatial}
+\abntrefinfo{Willis, Engel e Buri}{WILLIS; ENGEL; BURI}{1995}
+{WILLIS, H.~L.; ENGEL, M.~V.; BURI, M.~J. Spatial load forecasting.
+\emph{IEEE Computer Applications in Power}, IEEE, v.~8, n.~2, p. 40--43, 1995.}
+
+\bibitem[Willis e Romero 2007]{willis2007spatial}
+\abntrefinfo{Willis e Romero}{WILLIS; ROMERO}{2007}
+{WILLIS, H.~L.; ROMERO, J. Spatial electric load forecasting methods for
+  electric utilities.
+\emph{Quanta Technology}, 2007.}
+
+\bibitem[Wu e Lu 2002]{wu2002data}
+\abntrefinfo{Wu e Lu}{WU; LU}{2002}
+{WU, H.-C.; LU, C.-N. A data mining approach for spatial modeling in small area
+  load forecast.
+\emph{IEEE Transactions on Power Systems}, IEEE, v.~17, n.~2, p. 516--521,
+  2002.}
+
+\end{thebibliography}

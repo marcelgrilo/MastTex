@@ -1,0 +1,183 @@
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,
+	%twoside,			% para impressão em verso e anverso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	%french,				% idioma adicional para hifenização
+	%spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	]{abntex2}
+
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{cmap}				% Mapear caracteres especiais no PDF
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{multirow}			% tabelas
+\usepackage{mathtools}			% euqações
+\usepackage{todonotes}			% todos
+\usepackage{array}
+\usepackage{xr}					%referencia fora do capítulo
+\usepackage{amsmath}			% split com & em equacoes
+\def\labelitemi{--}
+
+\usepackage{float}	
+
+\usepackage{hyperref}
+\usepackage{tocbibind}
+\usepackage[portuguese, ruled, linesnumbered]{algorithm2e}
+\newcommand{\listofalgorithmes}{\tocfile{\listalgorithmcfname}{loa}}
+% ########### Arrumar ambiguidade no pacote algorithm2e entre português e espanhol. 
+\SetKwInput{Entrada}{Entrada}%
+\SetKwInput{Saida}{Sa\'{i}da}%
+\SetKwInput{Dados}{Dados}%
+\SetKwInput{Resultado}{Resultado}%
+\SetKw{Ate}{at\'{e}}
+\SetKw{KwRetorna}{retorna}%
+\SetKw{Retorna}{retorna}%
+\SetKwBlock{Inicio}{in\'{i}cio}{fim}%
+\SetKwRepeat{Repita}{repita}{at\'{e}}%
+%
+
+
+\SetKwIF{Se}{SenaoSe}{Senao}{se}{ent\~{a}o}{sen\~{a}o se}{sen\~{a}o}{fim se}%
+\SetKwSwitch{Selec}{Caso}{Outro}{selecione}{fa\c{c}a}{caso}{sen\~{a}o}{fim caso}{fim selec}%
+\SetKwFor{Para}{para}{fa\c{c}a}{fim para}%
+\SetKwFor{ParaPar}{para}{fa\c{c}a em paralelo}{fim para}
+\SetKwFor{ParaCada}{para cada}{fa\c{c}a}{fim para cada}%
+\SetKwFor{ParaTodo}{para todo}{fa\c{c}a}{fim para todo}%
+\SetKwFor{Enqto}{enquanto}{fa\c{c}a}{fim enqto}%
+
+% ---
+		
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+\title{Otimização Competitiva Imperialista para \\ Previsão Espacial Urbana}
+\author{Marcel Mendonça Grilo}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=black,          	% color of internal links
+    	citecolor=black,        		% color of links to bibliography
+    	filecolor=black,      		% color of file links
+		urlcolor=black,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+\begin{document}
+\selectlanguage{brazil}
+\DeclareGraphicsExtensions{.jpg,.pdf, .mps,.png}
+
+% ----------------------------------------------------------------
+% Páginas iniciais
+% ----------------------------------------------------------------
+
+\include{capa} %% Capa e Folha de rosto
+\include{agradecimentos}         %% Agradecimentos
+\include{resumo}                 %% Resumo
+\listoffigures                        %% Lista de Figuras
+\listoftables                         %% Lista de tabelas
+\listofalgorithms					
+\include{abreviaturas}           %% Lista de abreviaturas
+%\listoftodos %% remover esta lista
+\tableofcontents                      %% Sumário
+%-----------------------------------------------------------------
+% Corpo da Dissertação
+% ----------------------------------------------------------------
+
+\include{introducao}
+\include{metodologia}
+\include{desenvolvimento}
+\include{experimentos}
+\include{conclusao}
+
+\bibliography{bibliografia}
+
+%\include{apendices}
+
+\end{document}
+% ----------------------------------------------------------------
