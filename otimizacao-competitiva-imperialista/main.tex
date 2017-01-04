@@ -110,8 +110,10 @@
 % alterando o aspecto da cor azul
 \definecolor{blue}{RGB}{41,5,195}
 
-\title{Otimização Competitiva Imperialista para \\ Previsão Espacial Urbana}
-\author{Marcel Mendonça Grilo}
+\titulo{Otimização Competitiva Imperialista para \\ Previsão Espacial Urbana}
+\autor{Marcel Mendonça Grilo}
+%\local{Brasil}
+%\data{2017, v-1.9.6}
 
 % informações do PDF
 \makeatletter
@@ -150,6 +152,7 @@
 
 \begin{document}
 \selectlanguage{brazil}
+\frenchspacing 
 \DeclareGraphicsExtensions{.jpg,.pdf, .mps,.png}
 
 % ----------------------------------------------------------------
@@ -160,15 +163,18 @@
 \include{agradecimentos}         %% Agradecimentos
 \include{resumo}                 %% Resumo
 \listoffigures                        %% Lista de Figuras
+\pagebreak
 \listoftables                         %% Lista de tabelas
 \listofalgorithms					
 \include{abreviaturas}           %% Lista de abreviaturas
 %\listoftodos %% remover esta lista
-\tableofcontents                      %% Sumário
+\tableofcontents                     %% Sumário
+\cleardoublepage
+\textual
 %-----------------------------------------------------------------
 % Corpo da Dissertação
 % ----------------------------------------------------------------
-
+%\pagenumbering{arabic}
 \include{introducao}
 \include{metodologia}
 \include{desenvolvimento}

@@ -3,23 +3,12 @@
 \chapter{Desenvolvimento}
 \label{Desenvolvimento}
 
-%A seguir serão abordados os conceitos apresentados previamente a fim de dividir
-%a populaçãao em nichos distintos e buscar os melhores indivíduos em cada um deles,
-%explorando bem o espaço de busca e evitando a concentração em somente um máximo
-%ou mínimo local. A estratégia apresentada a seguir tenta resolver o problema evoluindo
-%somente uma populaçãao, sem a necessidade de nenhum controle direto sobre a separa-
-%cao dos nichos ou evoluçao do problema em questao a parte das funçoes de avaliacao e
-%distancia.
-%Esta estrategia e desejavel em contextos onde se faz necessaria a geracao de
-%diversas solu¸coes uteis que nao sejam muito semelhantes entre si; contexto muito comum,
-%por exemplo, em jogos com conteudo gerado proceduralmente, que devem gerar artigos
-%diversificados a fim de evitar repeticao e monotonia; comum tambem em problemas onde
-%a funcao de avaliacao e uma estimativa da solucao real, nao sendo possıvel evoluir uma
-%solucao direta para o problema, desta forma podemos evoluir solucoes variadas que se
-%adaptam bem a funcao de avaliacao e oferecam uma base para o auxılio a tomada de
-%decisao.
 
+Neste capítulo são detalhados como os conceitos apresentados previamente foram desenvolvidos. Suas melhoras, adaptações e correções são apresentadas de forma a facilitar a organização e desempenho. 
 
+Foram propostas modificações no ICA de forma a produzir uma implementação que possui maior desempenho na busca pela solução ideal para o problema proposto, fazendo com que suas operações possam ser processadas em paralelo, corrigindo um problema de valores aleatórios não proporcionais quando se usa dimensões de intervalos variados e a generalização na modelagem dos problemas.
+
+A formulação do ambiente apresenta como os dados são trabalhados, formando os mapas de quadrículas para serem processados pelo ICA, e como o problema de previsão é modelado em uma função de avaliação do ICA, onde todo o processo é descrito na seção \ref{Inicialização do ICA}, que usa uma aplicação diferenciada, combinando matrizes de convolução e fatores de ponderação.
 
 
 
@@ -41,12 +30,12 @@ Assim, o desenvolvimento do ICA de forma orientada a objetos é classificada com
 \end{itemize}
  
 \item Encapsulamento, que torna o desenvolvimento mais flexível, de modo que novas implementações sejam mais fáceis de criar ou modificar, pois mantém as partes da implementação separadas, como se fosse blocos ou módulos, os quais apenas precisam ser conectados para que funcionem. 
-Permite também o isolamento de propriedades privadas, sendo estas acesso apenas por métodos específicos ‘getters’ e ‘setters’. Permitindo a adição propriedades que facilitam o acesso aos atributos específicos de um elemento, ou validando valores inseridos ou alterados por agentes externos ao escopo do objeto.
+Permite também o isolamento de propriedades privadas, sendo estas acesso apenas por métodos específicos \emph{getters} e \emph{setters}. Permitindo a adição propriedades que facilitam o acesso aos atributos específicos de um elemento, ou validando valores inseridos ou alterados por agentes externos ao escopo do objeto.
 
-\item Herança, usada para modelar elementos mais complexos definidos de acordo com o modelo do problema, permitindo a extensão a classe ‘Country’ para adicionar propriedades ou métodos. Além de que ao se usar em combinação com polimorfismo pode alterar o comportamento de métodos através de sobrescrita.
+\item Herança, usada para modelar elementos mais complexos definidos de acordo com o modelo do problema, permitindo a extensão a classe \emph{Country} para adicionar propriedades ou métodos. Além de que ao se usar em combinação com polimorfismo pode alterar o comportamento de métodos através de sobrescrita.
 
-\item Polimorfismo, que permite referenciar tipos mais abstratos, os quais apenas definem o comportamento dos elementos concretos que os implementa. Neste caso, a definição da interface ‘IFItness’ e da classe abstrata ‘StopCondition’, é a aplicação do polimorfismo no ICA, que faz com que diversos problemas possam ser criados separadamente e sem que seja preciso alterar o funcionamento interno do  ICA.
-A sobrescrita de métodos da classe ‘Country’, quando estendida para alteração de comportamento e/ou funcionalidade, também é uma utilização de polimorfismo, uma vez que o ICA continua usando apenas os métodos e propriedades da classe base ‘Country’ (mesmo se sobrescritos), e não de sua extensão, que provavelmente será usada pela implementação da interface ‘IFitness’ em questão.
+\item Polimorfismo, que permite referenciar tipos mais abstratos, os quais apenas definem o comportamento dos elementos concretos que os implementa. Neste caso, a definição da interface \emph{IFItness} e da classe abstrata \emph{StopCondition}, é a aplicação do polimorfismo no ICA, que faz com que diversos problemas possam ser criados separadamente e sem que seja preciso alterar o funcionamento interno do  ICA.
+A sobrescrita de métodos da classe \emph{Country}, quando estendida para alteração de comportamento e/ou funcionalidade, também é uma utilização de polimorfismo, uma vez que o ICA continua usando apenas os métodos e propriedades da classe base \emph{Country} (mesmo se sobrescritos), e não de sua extensão, que provavelmente será usada pela implementação da interface \emph{IFitness} em questão.
 \end{itemize}
 
 Uma vez definido como será o desenvolvimento no aspecto de organização, aplicando os conceitos de orientação a objetos, os próximos passos devem focar no aspecto de otimização da aplicação para a obtenção das respostas em um período de tempo aceitável. Assim, foram definidas duas alterações, na qual uma delas não implica diretamente na alteração do funcionamento do ICA, sendo estas, a implementação do ICA de forma que este processe as funções de aptidão de forma paralelizada, e uma outra modificação que altera como as colônia se relacionam com seus países imperialistas durante o processo evolutivo.
@@ -55,11 +44,11 @@ Dentro da segunda categoria de  modificações, relacionadas à performance, sã
 
 Uma modificação que resultou em um bom aumento de precisão do ICA para soluções complexas é a alteração da forma com que uma colônia se movimenta para seu país imperialista, a qual fora denominada de “movimento refinado”, e que é uma otimização feita no algoritmo do ICA para que ele explore o espaço de busca de uma forma mais homogênea, controlando os ruídos (durante a movimentação) e mantendo a velocidade e precisão de convergência. Outra abordagem, denominada “visão imperial distorcida”, também foi utilizada com o mesmo intuito, buscando outra abordagem de movimento aleatorizado, apresentando bons resultados resultados e com uma capacidade de ser combinado com o primeiro.
 
-	As funcionalidades de “Revolução Colonial” e “União Imperial” são duas adições mencionadas por \cite{roche2011imperialist} que implicam na alteração do comportamento dos países e impérios, responsáveis por aumentar a velocidade de convergência do ICA para uma solução ótima. São mais sutis que 
+As funcionalidades de Revolução Colonial e União Imperial são duas adições mencionadas por \cite{roche2011imperialist} que implicam na alteração do comportamento dos países e impérios, responsáveis por aumentar a velocidade de convergência do ICA para uma solução ótima. São mais sutis que 
 
-	A Revolução Colonial é uma funcionalidade muito semelhante a mutação presente no algoritmo genético canônico, e por sua vez, neste contexto, faz com que um país que seja colônia de um país imperialista, tenha todos os seus atributos aleatorizados de forma que o ICA se torne capaz de evitar máximos/mínimos locais. A revolução colonial tem uma chance de ocorrer, podendo esta chance cair ou aumentar ao longo do passar das décadas.
+A Revolução Colonial é uma funcionalidade muito semelhante a mutação presente no algoritmo genético canônico, e por sua vez, neste contexto, faz com que um país que seja colônia de um país imperialista, tenha todos os seus atributos aleatorizados de forma que o ICA se torne capaz de evitar máximos/mínimos locais. A revolução colonial tem uma chance de ocorrer, podendo esta chance cair ou aumentar ao longo do passar das décadas.
 
-	A União Imperial é uma funcionalidade adicionada para aumentar a velocidade de assimilação de um império por outro e evitar também para evitar que dois impérios ocupem as mesmas posições. Assim, deve existir um limiar de união, que quando um império chegar próximo o suficiente de outro, inicia-se o processo de união, onde o império mais fraco é englobado pelo império mais forte.
+A União Imperial é uma funcionalidade adicionada para aumentar a velocidade de assimilação de um império por outro e evitar também para evitar que dois impérios ocupem as mesmas posições. Assim, deve existir um limiar de união, que quando um império chegar próximo o suficiente de outro, inicia-se o processo de união, onde o império mais fraco é englobado pelo império mais forte.
     
     
     
@@ -72,6 +61,7 @@ Uma modificação que resultou em um bom aumento de precisão do ICA para soluç
     
     
 \subsection{Modelagem e desenvolvimento}
+\label{Modelagem e desenvolvimento}
 
 O desenvolvimento de problemas que venham a utilizar de técnicas de inteligência artificial são implementados a partir de seu modelo matemático, que geralmente não são otimizados computacionalmente, ou ainda, que não são nem modelados apropriadamente para serem ótimos em determinado ambiente computacional. No ambiente em questão existem diversos tipos de linguagens de programação, as quais possuem diversas características, que por sua vez, definem as qualidades e desvantagens desta linguagem. As linguagens de programação e suas características principais são diferenciadas em sua essência pelos paradigmas de programação, onde os quatro principais paradigmas são bem caracterizados por  \cite{normark2013overview}. Tais paradigmas são uma forma de classificar determinada linguagem de acordo com seu estilo de programação e classificam suas características principais como apresentado na Figura \ref{fig:Ilustrations-Paradigms}.
 
@@ -86,7 +76,7 @@ O desenvolvimento de problemas que venham a utilizar de técnicas de inteligênc
 
 Para a modelagem de problemas de inteligência artificial, geralmente são escolhidas linguagens que pertencem aos paradigmas funcionais, porém, tais linguagens possuem mais limitações que as pertencentes ao paradigma imperativo, seja este limite em relação ao controle sobre o sistema ou aos dados. Este é um dos motivos de se ter escolhido uma linguagem pertencente ao paradigma imperativo (em sua essência) para o desenvolvimento deste trabalho. Como pode-se ver na Figura \ref{fig:Ilustrations-Paradigms} o paradigma imperativo divide-se em dois principais sub paradigmas, o procedural e o orientado a objetos (paradigma escolhido como melhoria para o desenvolvimento). 
 
-A linguagem de programação escolhida para o desenvolvimento do ICA pertence ao paradigma de programação imperativo orientado a objetos em sua maior parte, porém algumas de suas características se encaixam nas funcionalidades do paradigma declarativo funcional, que são funcionalidades como delegados (\emph{Delegate} - os quais permitem que funções sejam tratadas como objetos de primeira ordem, o que nada mais é do que um tipo seguro de ponteiro de função), inferência de tipo (que faz dedução automática de um tipo de dados), funções anônimas (ou abstrações lambdas), linguagem de consulta integrada (Language Integrated Query - LINQ), entre outros. Estes recursos são capazes de otimizar e imitar algumas das características utilizadas pelo paradigma declarativo funcional dentro de uma linguagem imperativa orientada a objetos. Assim, pode-se dizer que a linguagem é multi paradigmas, pois possui características de orientação a objetos, que permite tratar os campos de dados como objetos manipuláveis através de métodos pré-definidos, e permitindo também que a implementação faça o uso dos seus quatro conceitos mais importantes: abstração, encapsulamento, polimorfismo e herança, além de usufruir dos conceitos que não fazem parte paradigma imperativo, que também estão presentes na linguagem. 
+A linguagem de programação escolhida para o desenvolvimento do ICA pertence ao paradigma de programação imperativo orientado a objetos em sua maior parte, porém algumas de suas características se encaixam nas funcionalidades do paradigma declarativo funcional, que são funcionalidades como delegados (\emph{Delegate} - os quais permitem que funções sejam tratadas como objetos de primeira ordem, o que nada mais é do que um tipo seguro de ponteiro de função), inferência de tipo (que faz dedução automática de um tipo de dados), funções anônimas (ou abstrações lambdas), linguagem de consulta integrada LINQ, entre outros. Estes recursos são capazes de otimizar e imitar algumas das características utilizadas pelo paradigma declarativo funcional dentro de uma linguagem imperativa orientada a objetos. Assim, pode-se dizer que a linguagem é multi paradigmas, pois possui características de orientação a objetos, que permite tratar os campos de dados como objetos manipuláveis através de métodos pré-definidos, e permitindo também que a implementação faça o uso dos seus quatro conceitos mais importantes: abstração, encapsulamento, polimorfismo e herança, além de usufruir dos conceitos que não fazem parte paradigma imperativo, que também estão presentes na linguagem. 
 
 O algoritmo do ICA foi desenvolvido neste trabalho utilizando a linguagem de programação C\#. Como descrito acima, esta linguagem multi paradigmas permite o uso dos conceitos de orientação a objetos, que possibilitam uma forma diferente de organizar o problema. Tendo em mente que para se desenvolver uma solução que resolva o problema proposto, será necessário efetuar diversos testes com diversos modelos. A aplicação dos conceitos de orientação a objetos será imprescindível para organizar e manter o desenvolvimento de forma ágil e resiliente. A modelagem do ICA orientado a objetos foi particionado em 4 etapas básicas, na qual cada uma referencia a um dos 4 pilares da Orientação a Objetos.
 
@@ -98,7 +88,7 @@ Primeiramente, foi pensado em como separar os elementos básicos do ICA em objet
 \item Classe Abstrata \emph{ StopCondition}
 \end{itemize}
 
-A classe \emph{Country} (Figura \ref{fig:ClassesICA-Country})  representa um país do ICA, sendo este colônia ou império, e é semelhante a um indivíduo no GA. O país possui o conjunto de atributos que serão usados pela função de avaliação de modo que esta função de avaliação calcule um custo para este país, sendo este valor de custo armazenado na própria classe. Esta classe ainda armazena atributos que definem se o país é um país imperialista ou se ele é uma colônia. Logo, para que se possa manusear melhor o país, independente de sua posição política, existe um valor que representa dois estados, dependendo do que o país possa ser, colônia ou império. Se este país for uma colônia, este valor representará o numero do império a que este país pertence. Se este país for um império, este valor será o índice do vetor de impérios ordenados por custos presente na classe ImperialistCompetition descrita logo abaixo.
+A classe \emph{Country} (Figura \ref{fig:ClassesICA-Country})  representa um país do ICA, sendo este colônia ou império, e é semelhante a um indivíduo no GA. O país possui o conjunto de atributos que serão usados pela função de avaliação de modo que esta função de avaliação calcule um custo para este país, sendo este valor de custo armazenado na própria classe. Esta classe ainda armazena atributos que definem se o país é um país imperialista ou se ele é uma colônia. Logo, para que se possa manusear melhor o país, independente de sua posição política, existe um valor que representa dois estados, dependendo do que o país possa ser, colônia ou império. Se este país for uma colônia, este valor representará o numero do império a que este país pertence. Se este país for um império, este valor será o índice do vetor de impérios ordenados por custos presente na classe \emph{ImperialistCompetition} descrita logo abaixo.
 
 Durante o desenvolvimento foi pensado que poderiam ser criadas mais duas classes, sendo estas a classe Colônia e a classe Imperialista, que derivariam da classe \emph{Country}, porém não foram criadas por dois motivos: (1) A concepção de uma classe Colônia e uma classe Imperialista que derivassem da classe \emph{Country} não teriam nem propriedades e nem métodos que as diferenciassem da classe, sendo estas diferentes apenas suas identidades (OBS: a classe imperialista até poderia possuir um vetor para as colônias que controla, mas seria redundante e aumentaria a complexidade no controle das operações efetuadas pelo ICA). (2) O segundo motivo é referente ao impacto da implementação destas duas classes, que necessitaria de muito mais lógica para manuseio dos objetos, sendo que o foco não é implementar uma abstração tão afundo da ideia original, mas sim uma implementação de baixa complexidade, que faça com que o sistema seja simples de ser mantido e testado. 
 
@@ -328,6 +318,7 @@ Todas estas alterações de otimização do ICA apenas foram possíveis através
 
 
 \subsection{Exemplos de aplicação do ICA genérico}
+\label{Exemplos de aplicação do ICA genérico}
 
 Abaixo apresentam-se dois cenários distintos de implementação do ICA Generalista abordando dois problemas, G1 e G2. O primeiro é uma implementação mais simples, em que a avaliação se dá pela necessidade de minimização da função matemática:
 
@@ -505,6 +496,8 @@ Assim concluímos os exemplos demonstrando a praticidade com que a generalizaç�
 
 
 \section{Análise da operação de movimento do ICA}
+\label{Análise da operação de movimento do ICA}
+
 
 Antes de apresentar cada alteração na operação de movimentação, foi definido um problema que será usado como referência para ambientalizar e ilustrar o entendimento, tanto da operação de movimento citada originalmente, quanto das operações de movimento alteradas apresentadas neste trabalho. O problema P1 em questão refere-se a minimização da função esfera dentro de um intervalo fechado e bidimensional, como mostra a equação \ref{eq:ProblemP1-SphereFunction}.  
 
@@ -558,6 +551,7 @@ A partir desta análise, foi possível criar novas formas de movimentação e ve
 
 
 \subsection{Movimento refinado}
+\label{Movimento refinado}
 
 O movimento refinado foi concebido com o intuito de solucionar o problema do movimento Original, o qual tem a geração de ruído fixa, e não proporcional aos limites do problema caso e as dimensões tenham limites diferentes para cada atributo. Então, a proposta é manter o ruído, porém este deve ser proporcional aos limites de cada dimensão. O fluxograma apresentado na Figura \ref{fig:Fluxograms-ColinyEmpireMovement} Original ICA demonstra a ordem em que ocorrem o cálculo dos valores que irão compor os novos atributos de uma dada colônia para o movimento original descrito anteriormente, sendo, o cálculo tamanho do passo \(x\) de cada atributo, calculado com o mesmo valor aleatório \(CoefAssimilação\) para todos os atributos, e quando é multiplicado pela distância, se torna proporcional aquele atributo. E antes de atribuir o novo valor a cada atributo, adiciona-se o valor de ruído aleatório. Assim define-se o valor final de cada atributo como apresentado pela equação \ref{eq:ica9}
 	
@@ -611,6 +605,8 @@ A Figura\ref{fig:Movimento_Refinado}, analogamente a Figura\ref{fig:Movimento_Or
 
 
 \subsection{Visão imperial distorcida}
+\label{Visão imperial distorcida}
+
 
 A movimentação de uma colônia em direção ao seu país imperialista nada mais é que a tendência da colônia  se parecer mais com seu império ao longo do passar de décadas. Para que a colônia se molde de forma a ter suas características mais parecidas com a de seu império, ela primeiro calcula o quão distante suas características estão do seu império, e então se movimenta em direção ao seu imperialista de acordo com um valor de assimilação. 
 
@@ -689,6 +685,8 @@ Concluindo esta seção, tem-se agora três (Refinado, Visão imperial distorcid
 
 
 \section{Paralelização do ICA}
+\label{Paralelização do ICA}
+
 
 Algoritmos evolutivos têm como parte essencial para convergência a função de aptidão, que deve ser bem definida e voltada para o problema. Tal função, deve ser executada durante todas as décadas. No ICA, a função de aptidão proposta foi definida de forma a executar cálculos os quais resultam em um valor de custo para o país, tal que este custo seja utilizado por todos os componentes do ICA, a fim de buscar pela melhor solução. A quantidade de chamadas à função de aptidão é dependente basicamente de dois valores, do número de países \(np\) e número de décadas \(nd\). 
 
@@ -723,6 +721,8 @@ A melhora no desempenho não é apenas dependente da paralelização do cálculo
 
 
 \section{Formulação do ambiente}
+\label{Formulação do ambiente}
+
 
 Os dados de entrada iniciais utilizados para o desenvolvimento da solução representam e classificam, quando e onde ocorreram instalações na rede de distribuição elétrica de uma dada região. O objetivo é obter a partir destes dados a previsão de expansão espacial urbana, no caso, relativo à densidade de carga elétrica. Assim pode-se aplicar tal previsão no planejamento de cargas, em sistemas inteligentes de energia (smartgrids), gerenciamento de cargas (reposicionamento de transformadores ou subestações para localizações mais apropriadas), dentre outros. 
 
@@ -866,6 +866,7 @@ Conclui-se então, a modelagem do ambiente, demonstrando como os dados iniciais 
 
 
 \section{Inicialização do ICA}
+\label{Inicialização do ICA}
 
 Para que o ICA seja inicializado apropriadamente, de forma a gerar soluções que possam ser usadas para prever a densidade espacial de carga períodos a frente, é necessário que se modele o problema como foi feito nos problemas \ref{G1Problem}G1 e G2\ref{G2Problem}, descritos no neste capítulo pelo item \ref{Exemplos de aplicação do ICA genérico}. Assim, é necessário que sejam definidos, a função de avaliação, o que cada dimensão representará durante o processo evolutivo, e consequentemente a quantidade de dimensões. Deve-se também antes de iniciar o processo evolutivo definir quais são os limites de cada dimensão definida.
 
@@ -879,6 +880,7 @@ Um grande problema, não apenas para este tipo de solução, mas para todas as t
 
 
 \subsection{Avaliação dos países}
+\label{Avaliação dos países}
 
 A avaliação do problema deve fornecer indivíduos capazes de efetuar uma previsão de densidade espacial, sobre a região apresentada, para um ou mais períodos à frente, a partir de um conjunto de mapas matrizes e os índices de crescimento absoluto durante os períodos. Assim, a avaliação de cada indivíduo irá ser resumida nas etapas:
 \begin{itemize}
@@ -941,6 +943,7 @@ De modo que durante as próximas etapas, sejam calculados os erros, comparando o
 
 
 \subsection{A função de avaliação}
+\label{A função de avaliação}
 
 A primeira etapa da implementação da função de avaliação, que é definida pelo problema em questão, para ser processado pelo ICA, é a definição da interface \emph{IFitness} e consequente implementação de seus métodos e propriedades em uma classe chamada \emph{PonderationFullConvolutionFitness}. A implementação desta interface, independente da implementação dos métodos ou propriedades, divide-se nas partes: 
 \begin{itemize}
@@ -980,9 +983,9 @@ Dimensions = PonderationCount \cdot (maskCount + 1),
 \end{split}
 \end{equation}
 
-A definição do valor de dimensões dos países é obrigatória e ocorre durante a inicialização do objeto que implementa a função de  avaliação (ou implementação da interface \emph{IFitness}), e faz parte da modelagem do problema. Note que não se define diretamente o valor de dimensões no país, mas sim na função de avaliação, para  que a solução fique genérica e dependa apenas da implementação da função de aptidão como demonstrado no capítulo de desenvolvimentoREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREF, e ainda, não se insere um valor fixo, mas sim na expressão \ref{eq:forecastDimensions} de modo que o número de dimensões ainda varie de acordo com os valores de número de ponderações e ordem da máscara de convolução.
+A definição do valor de dimensões dos países é obrigatória e ocorre durante a inicialização do objeto que implementa a função de  avaliação (ou implementação da interface \emph{IFitness}), e faz parte da modelagem do problema. Note que não se define diretamente o valor de dimensões no país, mas sim na função de avaliação, para  que a solução fique genérica e dependa apenas da implementação da função de aptidão como demonstrado neste capítulo em \ref{ICA Orientado a Objetos}, e ainda, não se insere um valor fixo, mas sim na expressão \ref{eq:forecastDimensions} de modo que o número de dimensões ainda varie de acordo com os valores de número de ponderações e ordem da máscara de convolução.
 
-	Cada país usa a implementação padrão da classe \emph{Country} do ICA, descrita no capítulo de desenvolvimentoREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREFREF, sem nenhuma alteração, assim, todo indivíduo terá uma distribuição uniforme quando gerar os números aleatórios para seus atributos, tanto em sua inicialização quanto em chamadas que sorteiam estes atributos do indivíduo durante a evolução, causadas pela operação de revolução colonial.
+	Cada país usa a implementação padrão da classe \emph{Country} do ICA, sem nenhuma alteração, assim, todo indivíduo terá uma distribuição uniforme quando gerar os números aleatórios para seus atributos, tanto em sua inicialização quanto em chamadas que sorteiam estes atributos do indivíduo durante a evolução, causadas pela operação de revolução colonial.
 
 	A figura \ref{fig:VetorAtributosForecast-Ingles} ilustra como os valores são dispostos no vetor de atributos do país. Observe que primeiro vem o valor de ponderação e em seguida vem os valores da máscara de convolução, formando um bloco. O número de blocos é dependente da quantidade de ponderações que se deseja gerar para um mapa, e o tamanho de cada bloco depende da ordem da matriz de convolução.
 

@@ -1,0 +1,79 @@
+%% Documento Principal da Dissertação de Mestrado
+%% ---------------------------------------------------------------
+\documentclass[hidelinks]{abnt}
+%\documentclass[draft]{abnt} %% para ver overfull hbox
+
+% Incluir Pacotes ------------------------------------------------
+\usepackage [brazil] {babel}
+\usepackage [utf8] {inputenc}
+\usepackage{ae}                         %% Font Encoding T1 (PDF)
+\usepackage[pdftex]{color, graphicx}
+\usepackage{lscape}                     %% Utilizar página em landscape
+\usepackage{url}                        %% Trata URLs, e-mails e paths
+\usepackage{hyperref}
+\usepackage[alf]{abntex2cite}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\usepackage[font=footnotesize,labelfont=bf]{caption}
+\usepackage{placeins}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage[table]{xcolor}
+\usepackage{todonotes}
+%\usepackage{showframe}
+\def\labelitemi{--}
+
+%\hypersetup{
+%    colorlinks,
+%    linkcolor={red!50!black},
+%    citecolor={blue!50!black},
+%    urlcolor={blue!80!black}
+%}
+
+\newcommand\myworries[1]{\textcolor{red}{#1}}
+\renewcommand{\ABNTchapterfont}{\fontfamily{cmr}\fontseries{b}\selectfont}
+\renewcommand{\ABNTsectionfont}{\fontfamily{cmr}\fontseries{b}}
+\renewcommand{\tituloformat}{\large\bfseries}
+\setlength{\parindent}{2cm}
+\setlist[itemize,1]{label={\textbullet}}
+
+\lstset{numbers=left, stepnumber=5, firstnumber=1,
+numberstyle=\tiny, extendedchars=true, breaklines=true, frame=tb,
+basicstyle=\footnotesize, stringstyle=\ttfamily,
+showstringspaces=false }
+
+\begin{document}
+\DeclareGraphicsExtensions{.jpg,.pdf, .mps,.png}
+
+% ----------------------------------------------------------------
+% Páginas iniciais
+% ----------------------------------------------------------------
+
+\include{main/capa}                   %% Capa e Folha de rosto
+\include{main/agradecimentos}         %% Agradecimentos
+\include{main/resumo}                 %% Resumo
+\listoffigures                        %% Lista de Figuras
+\listoftables                         %% Lista de tabelas
+\include{main/abreviaturas}           %% Lista de abreviaturas
+%\listoftodos %% remover esta lista
+\tableofcontents                      %% Sumário
+
+%-----------------------------------------------------------------
+% Corpo da Dissertação
+% ----------------------------------------------------------------
+
+\include{main/introducao}
+\include{main/metodologia}
+\include{main/desenvolvimento}
+\include{main/experimentos}
+\include{main/conclusao}
+
+\bibliography{bibliografia}
+
+\include{main/apendices}
+
+\end{document}
+% ----------------------------------------------------------------

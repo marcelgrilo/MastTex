@@ -1,10 +1,9 @@
 % ----------------------------------------------------------------
 % Descrição do Trabalho, relevância e abordagens.
 % ----------------------------------------------------------------
-\chapter*[Introdução]{Introdução}
+\chapter{Introdução}
 \label{introducao}
-
-\addcontentsline{toc}{chapter}{Introdução}
+%\addcontentsline{toc}{chapter}{Introdução}
 
 \section{Contexto}
 
@@ -169,15 +168,15 @@ Então tem-se que \(e = 0.0167086\). Assim, haverá um erro mínimo sempre que a
 
 Este trabalho utiliza-se muito da fórmula de haversine para converter os dados iniciais, dispostos em coordenadas geográficas, para coordenadas cartesianas, de modo que se crie uma matriz de pequenas áreas (quadrículas), onde estas pequenas áreas possam vir a ser usadas para gerar um mapa cartesiano que represente fielmente os dados que foram convertidos, tanto para o processamento destes dados quanto para a apresentação dos resultados.
 
-A previsão espacial apresentada por este trabalho é efetuada usando-se um algoritmo que classifica-se como evolutivo, isto é, está na mesma categoria que algoritmos como algoritmos genéticos \cite{mitchell1998introduction} (GA - Genetic Algorithm) e otimização por enxame de partículas (PSO - Particle Swarm Optimization). \cite{atashpaz2007imperialist} apresenta o algoritmo imperialista competitivo (ICA - Imperialistic Competitive Algorithm), que atinge resultados tão bem quanto algoritmos genéticos, atingindo o mínimo global geralmente ao mesmo tempo que o algoritmo genético. 
+A previsão espacial apresentada por este trabalho é efetuada usando-se um algoritmo que classifica-se como evolutivo, isto é, está na mesma categoria que algoritmos como algoritmos genéticos (AG) \cite{mitchell1998introduction} e otimização por enxame de partículas (PSO). \cite{atashpaz2007imperialist} apresenta o algoritmo imperialista competitivo (ICA), que atinge resultados tão bem quanto algoritmos genéticos, atingindo o mínimo global geralmente ao mesmo tempo que o algoritmo genético. 
 
-A vantagem do ICA  sobre o GA se dá em relação média do custo de toda polulação, onde o GA geralmente fica estagnado em um patamar devido ao fato de que sempre que ocorrem mutações, seleções ou criação de novos indivíduos para complementar a população, estes indivíduos são gerados com valores aleatórios, impossibilitando a convergência de toda a população para a solução ótima. O ICA por sua vez consegue fazer com que toda a população seja convergida para a solução ótima, sem que fique estagnado ou ceia em mínimos locais.  
+A vantagem do ICA sobre o GA se dá em relação média do custo de toda população, onde o GA geralmente fica estagnado em um patamar devido ao fato de que sempre que ocorrem mutações, seleções ou criação de novos indivíduos para complementar a população, estes indivíduos são gerados com valores aleatórios, impossibilitando a convergência de toda a população para a solução ótima. O ICA por sua vez consegue fazer com que toda a população seja convergida para a solução ótima, sem que fique estagnado ou ceia em mínimos locais.  
 
 Outra sutil vantagem que o ICA possui sobre o GA é o fato de seus atributos serem valores numéricos de ponto flutuante, uma vez que no GA em sua versão canônica, utilizam-se vetores de atributos binários, que, desta forma, seria sempre necessário traduzir o valor do cromossomo para valores numéricos. 
 
 Este trabalho utiliza um grande conjunto de números de ponto flutuante para sua função de avaliação, que são traduzidos para estruturas usadas pela função. Caso o vetor de atributos fosse de valores binários, seriam necessária uma tradução dos valores binários para valores numéricos de ponto flutuante, antes mesmo de se gerar as estruturas usadas pela função de avaliação, tornando este processo muito mais complexo.
 
-\cite{roche2011imperialist} traz uma aplicação concreta do ICA voltado para otimizar o uso de ferramentas que definem estrategicamente a alocação de unidades de geração de energia para as usinas de acordo com diversos parâmetros. O ICA é comparado com modelos convencionais, como AG e PSO, tendo uma efetividade maior tanto em previsão quanto em velocidade. Voltando o Foco para a o desenvolvimento do ICA feito por \citeauthor{roche2011imperialist}, ele desenvolveu o ICA na linguagem Java, que pode ser acessado pelo repositório GIT em github.com/robinroche/jica \cite{jica}, sendo desenvolvido em uma linguagem orientada a objetos, de forma simples. Este trabalho propõe uma melhora na implementação orientada a objetos para o ICA de modo que ele possa ser usado genericamente para qualquer caso ou aplicação, de modo que a modelagem de qualquer problema seja rápida, prática, modular e sem a necessidade de alterar o código fonte principal da lógica do ICA. 
+\cite{roche2011imperialist} traz uma aplicação concreta do ICA voltado para otimizar o uso de ferramentas que definem estrategicamente a alocação de unidades de geração de energia para as usinas de acordo com diversos parâmetros. O ICA é comparado com modelos convencionais, como AG e PSO, tendo uma efetividade maior tanto em previsão quanto em velocidade. Voltando o Foco para a o desenvolvimento do ICA feito por \citeauthor{roche2011imperialist}, ele desenvolveu o ICA na linguagem Java, que pode ser acessado pelo repositório git em github.com/robinroche/jica \cite{jica}, sendo desenvolvido em uma linguagem orientada a objetos, de forma simples. Este trabalho propõe uma melhora na implementação orientada a objetos para o ICA de modo que ele possa ser usado genericamente para qualquer caso ou aplicação, de modo que a modelagem de qualquer problema seja rápida, prática, modular e sem a necessidade de alterar o código fonte principal da lógica do ICA. 
 
 Tendo conhecimento que o desenvolvimento de uma metodologia para previsão espacial apresenta uma solução de alta complexidade, exige elevada quantidade de informação e a qual se deve levar em conta diversos fatores de crescimentos aleatórios e/ou imprevisíveis (como desejo político ou planejamento externo), tais problemas apresentam soluções de domínio não lineares. Assim, este trabalho propõe uma implementação diferenciada do ICA de forma que este seja capaz de atender a todas as requisições do problema de forma prática, precisa e rápida. 
 
@@ -190,4 +189,19 @@ A primeira preocupação durante o desenvolvimento foi encontrar quais seriam as
 
 
 \section{Estrutura da Dissertação}
+
+
+Este documento está dividido nos capítulos: Introdução, Metodologia, Desenvolvimento, Experimentos e Resultados e Conclusão.
+
+No capítulo introdução é contextualizado o conceito de previsão espacial urbana, que pode ser feita a partir de diversos métodos e técnicas. Também são apresentados os objetivos definidos e a justificativa da realização do trabalho.
+
+Em Metodologia são detalhados os principais conceitos e técnicas pesquisados e aplicados no trabalho, abrangendo principalmente o Algoritmo Imperialista Competitivo e a operação matemática de convolução.
+
+O capítulo Desenvolvimento descreve especificamente como as técnicas escolhidas foram desenvolvidas, modificadas e implementadas focando nos objetivos e na solução do problema.
+
+Já no capítulo Experimentos e Resultados são apresentados como o ambiente foi modelado, como o método proposto se comportou sobre uma e sobre muitas regiões, e apresentação dos resultados sobre dados reais, apresentando os resultados em forma de imagens de alta resolução e uma tabela comparativa.
+
+Por fim, no capítulo Conclusão são considerados os resultados obtidos frente aos objetivos propostos, a colaboração deste trabalho, assim como a indicação de trabalhos futuros para a continuidade da pesquisa.
+
+
 
