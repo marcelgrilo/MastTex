@@ -97,9 +97,13 @@ A estimativa para ambas as áreas serão completamente distintas, sendo que na p
 
 Ao se fazer uma análise estatística entre uma região estimada e sua região real, comparando o erro absoluto de cada pequena área (quadrícula). É possível ocorrer que uma região seja estimada de forma absolutamente correta, assim como também pode ocorrer que uma região seja estimada de forma totalmente incorreta. Neste trabalho trata-se minimizar tais erros de modo a fazer com que toda região tenha uma estimativa com o menor erro possível, seguindo as taxas de crescimento tanto das pequenas áreas, quanto da região como um todo, e ainda, agrega o crescimento das pequenas áreas presentes nas redondezas da pequena área que esteja sendo analisada.
 
-Para o desenvolvimento da aplicação foi necessária inicialmente a modelagem dos dados iniciais de modo que estes fossem convertidos com a menor ou nenhuma quantidade de erro residual. Pois neste caso, os dados estão representados em coordenadas geográficas, e são utilizadas diversos cálculos de distância para que eles sejam adequadamente identificados em sua pequena região. Para se calcular a distância entre dois pontos, dispostos em um mapa terrestre em coordenadas cartesianas, pode-se aplicar o teorema de Pitágoras:
+Para o desenvolvimento da aplicação foi necessária inicialmente a modelagem dos dados iniciais de modo que estes fossem convertidos com a menor ou nenhuma quantidade de erro residual. Pois neste caso, os dados estão representados em coordenadas geográficas, e são utilizadas diversos cálculos de distância para que eles sejam adequadamente identificados em sua pequena região. Para se calcular a distância entre dois pontos, dispostos em um mapa terrestre em coordenadas cartesianas, pode-se aplicar o teorema de Pitágoras \ref{eq:pitagoras}:
 
-\[d = \sqrt{(X2 - X1)^2 + (Y2 - Y1)^2}\]
+\begin{equation}
+\label{eq:pitagoras}
+d = \sqrt{(X2 - X1)^2 + (Y2 - Y1)^2}
+\end{equation}
+%\[d = \sqrt{(X2 - X1)^2 + (Y2 - Y1)^2}\]
 
 Sendo \((X1, X2)\) e \((Y1,Y2)\) os pontos iniciais e finais de longitude e latitude respectivamente.
 
@@ -110,32 +114,50 @@ Esta fórmula de cálculo de distância, quando aplicada a pontos cuja distânci
 \item De 0 a 9 metros para latitudes menores que 30 graus.
 \end{itemize}
 
-Tal gestão de erros é desnecessária quando se usa a distância calculada pela fórmula de Haversine \cite{shumaker1984astronomical}, que calcula a distância entre dois pontos dispostos na superfície de uma esfera, relacionando os lados aos ângulos de uma esfera triangular. Assim, fazendo o uso de um mapa terrestre esférico, onde tal esfera possui raio \(R\), e tendo a representação dos pontos que se deseja calcular a distância como vetores compostos na forma (Longitude, Latitude), temos que o \(ponto1 = (lon1,lat1)\) e o \(ponto2 = (lon2,lat2)\), calculamos a distância como mostra a expressão:
+Tal gestão de erros é desnecessária quando se usa a distância calculada pela fórmula de Haversine \cite{shumaker1984astronomical}, que calcula a distância entre dois pontos dispostos na superfície de uma esfera, relacionando os lados aos ângulos de uma esfera triangular. Assim, fazendo o uso de um mapa terrestre esférico, onde tal esfera possui raio \(R\), e tendo a representação dos pontos que se deseja calcular a distância como vetores compostos na forma (Longitude, Latitude), temos que o \(ponto1 = (lon1,lat1)\) e o \(ponto2 = (lon2,lat2)\), calculamos a distância como mostram as expressões em \ref{eq:distsphere}:
 
-\[dlon = lon2 - lon1\]
-\[dlat = lat2 - lat1\]
-\[a = \sin^2\left(\frac{dlat}{2}\right) + \cos(lat1) \cdot \cos(lat2) \cdot \sin^2\left(\frac{dlon}{2}\right)\]
-\[c = 2 \cdot \arcsin(\min(1,\sqrt{a}))\]
-\[d = R \cdot c\]
+\begin{equation}
+\label{eq:distsphere}
+\begin{split}
+dlon = lon2 - lon1 \\
+dlat = lat2 - lat1 \\
+a = \sin^2\left(\frac{dlat}{2}\right) + \cos(lat1) \cdot \cos(lat2) \cdot \sin^2\left(\frac{dlon}{2}\right) \\
+c = 2 \cdot \arcsin(\min(1,\sqrt{a})) \\
+d = R \cdot c 
+\end{split}
+\end{equation}
+%\[dlon = lon2 - lon1\]
+%\[dlat = lat2 - lat1\]
+%\[a = \sin^2\left(\frac{dlat}{2}\right) + \cos(lat1) \cdot \cos(lat2) \cdot \sin^2\left(\frac{dlon}{2}\right)\]
+%\[c = 2 \cdot \arcsin(\min(1,\sqrt{a}))\]
+%\[d = R \cdot c\]
 
 A distância calculada resulta em um valor exato, tanto computacionalmente quanto matematicamente, onde \(c\) é a distância do caminho mais curto entre os dois pontos, denominada ortodromia, representada em radianos, que multiplica \(R\), convertendo o resultado de d para a mesma unidade do Raio \(R\). 
 
 A função \(min\) protege contra possíveis erros de arredondamento que podem sabotar a computação do arco-seno caso os dois pontos estejam em lados opostos da terra. Sob estas condições, a Fórmula Haversine é mal condicionada, mas o erro, que talvez pareça grande, que chega a ser de aproximadamente 2 km, está no contexto de uma distância próxima 20000 km, sendo que este erro é de aproximadamente 0.00001\% da distância total.
 
-No ambiente computacional, a maioria das funções ou componentes trigonométricos são expressados em radianos. Uma vez que os dados de coordenadas (Longitude e Latitude) geralmente estão expressos na forma Graus, Minutos e Segundos, é necessário convertê-los para graus decimais:
+No ambiente computacional, a maioria das funções ou componentes trigonométricos são expressados em radianos. Uma vez que os dados de coordenadas (Longitude e Latitude) geralmente estão expressos na forma Graus, Minutos e Segundos, é necessário convertê-los para graus decimais como mostra a equação de conversão \ref{eq:coordDec}:
 
-\[
+%\[
+\begin{equation}
+\label{eq:coordDec}
 \begin{matrix}
 coordDec = 
 & coordGMS.Graus +\\ 
 & \left(\frac{CoordGMS.Minutos}{60}\right) +\\ 
 & \left(\frac{CoordGMS.Segundos}{3600}\right)
 \end{matrix}
-\]
+\end{equation}
+%\]
 
-Com as coordenadas convertidas para graus decimais, ainda é necessário convertê-las para radianos, que é simplesmente multiplicar a coordenada em graus decimais por \(\frac{\pi}{180}\):
+Com as coordenadas convertidas para graus decimais, ainda é necessário convertê-las para radianos, que é simplesmente multiplicar a coordenada em graus decimais por \(\frac{\pi}{180}\) como mostra a equação \ref{eq:coorRad}:
 
-\[coordRad = \frac{coordDec \cdot \pi}{180}\]
+%\[
+\begin{equation}
+\label{eq:coorRad}
+coordRad = \frac{coordDec \cdot \pi}{180}
+\end{equation}
+%\]
 
 Por fim, a definição de \(R\) como sendo o raio da esfera, deve ser levado em consideração que o planeta Terra não é uma esfera perfeita, mas sim, possui uma forma chamada esferóide oblato (Figura \ref{fig:OblateSpheroid}), e portanto, deve-se considerar diferentes raios para diferentes posições de latitude, uma vez que o achatamento ocorre nos polos.  
 
@@ -146,27 +168,45 @@ Por fim, a definição de \(R\) como sendo o raio da esfera, deve ser levado em 
 	\label{fig:OblateSpheroid}
 \end{figure}
 
-A circunferência oficial terrestre é de 40003.2 km, que provém da definição de uma milha náutica, que historicamente é definida como 1 arco de minuto medido, à superfície média do mar, ao longo de um qualquer grande círculo da Terra. Como a terra não é uma esfera, tal definição é ambígua. Então, o valor aceito internacionalmente(SI) para uma milha náutica é de exatamente 1.852 km. Deste modo, define-se como circunferência terrestre, o valor de 40003.2 km:
+A circunferência oficial terrestre é de 40003.2 km, que provém da definição de uma milha náutica, que historicamente é definida como 1 arco de minuto medido, à superfície média do mar, ao longo de um qualquer grande círculo da Terra. Como a Terra não é uma esfera, tal definição é ambígua. Então, o valor aceito internacionalmente(SI) para uma milha náutica é de exatamente 1.852 km. Deste modo, define-se como circunferência terrestre, o valor de 40003.2 km como mostrado em \ref{eq:earthCirc}:
 
-\[40003.2 (km) = 360(grau) * 60\left(\frac{minuto}{grau}\right) * 1.852\left(\frac{km}{minuto}\right)  \]
+%\[
+\begin{equation}
+\label{eq:earthCirc}
+40003.2 (km) = 360(grau) * 60\left(\frac{minuto}{grau}\right) * 1.852\left(\frac{km}{minuto}\right)  
+\end{equation}
 
-Implicando então que o raio \(R\) seja de:
+%\]
 
-\[R = \frac{40003.2}{(2 \cdot \pi)} = 6367 (km) \]
+Implicando então que o raio \(R\) seja de 6367 km (\ref{eq:earthRadius}):
 
-Como o planeta Terra não é representado por uma esfera, mas sim por um esferóide oblato, e possui um Raio Polar de 6357 km e um raio equatorial de 6378 km, uma aproximação satisfatória seria como mostra a expressão:
+\begin{equation}
+\label{eq:earthRadius}
+R = \frac{40003.2}{(2 \cdot \pi)} = 6367 (km)
+\end{equation}
+%\[R = \frac{40003.2}{(2 \cdot \pi)} = 6367 (km) \]
 
-\[R = 6378 - 21 \cdot \sin(lat) \]
+Como o planeta Terra não é representado por uma esfera, mas sim por um esferóide oblato, e possui um Raio Polar de 6357 km e um raio equatorial de 6378 km, uma aproximação satisfatória seria como mostra a expressão \ref{eq:earthRadiusAprox}:
 
-Porém, tal aproximação é dependente apenas do valor de latitude, e o raio da curvatura é dependente não só do valor de latitude, mas também da direção, de acordo com \cite{snyder1987map}. Então, usa-se:
+\begin{equation}
+\label{eq:earthRadiusAprox}
+R = 6378 - 21 \cdot \sin(lat)
+\end{equation}
+%\[R = 6378 - 21 \cdot \sin(lat) \]
 
-\[R = \frac{ a \cdot (1 - e^2)}{ (1 - e^2 \cdot \sin^2(lat))^\frac{3}{2}}\]
+Porém, tal aproximação é dependente apenas do valor de latitude, e o raio da curvatura é dependente não só do valor de latitude, mas também da direção, de acordo com \cite{snyder1987map}. Então, usa-se \(R\) como mostra \ref{eq:earthRadiusCorrection}:
+
+\begin{equation}
+\label{eq:earthRadiusCorrection}
+R = \frac{ a \cdot (1 - e^2)}{ (1 - e^2 \cdot \sin^2(lat))^\frac{3}{2}}
+\end{equation}
+%\[R = \frac{ a \cdot (1 - e^2)}{ (1 - e^2 \cdot \sin^2(lat))^\frac{3}{2}}\]
 
 Onde \(a\) é o raio equatorial, \(b\) o raio polar, e \(e\) é a excentricidade do 
 \(\text{elipsóide} = \left(1 - \frac{b^2}{a^2}\right)^\frac{1}{2}\). 
 Então tem-se que \(e = 0.0167086\). Assim, haverá um erro mínimo sempre que as distâncias entre dois pontos de coordenadas geográficas forem calculadas utilizando a fórmula de haversine.
 
-Este trabalho utiliza-se muito da fórmula de haversine para converter os dados iniciais, dispostos em coordenadas geográficas, para coordenadas cartesianas, de modo que se crie uma matriz de pequenas áreas (quadrículas), onde estas pequenas áreas possam vir a ser usadas para gerar um mapa cartesiano que represente fielmente os dados que foram convertidos, tanto para o processamento destes dados quanto para a apresentação dos resultados.
+Este trabalho utiliza-se muito da fórmula de haversine para converter os dados iniciais, dispostos em coordenadas geográficas, para coordenadas cartesianas, de modo que seja criada uma matriz de pequenas áreas (quadrículas), onde estas possam vir a ser usadas para gerar um mapa cartesiano que represente fielmente os dados que foram convertidos, tanto para o processamento destes dados quanto para a apresentação dos resultados.
 
 A previsão espacial apresentada por este trabalho é efetuada usando-se um algoritmo que classifica-se como evolutivo, isto é, está na mesma categoria que  algoritmos genéticos (AG) \cite{mitchell1998introduction} e otimização por enxame de partículas (PSO). \cite{atashpaz2007imperialist} apresenta o algoritmo imperialista competitivo (ICA), que atinge resultados tão bem quanto algoritmos genéticos, atingindo o mínimo global geralmente ao mesmo tempo que o algoritmo genético. 
 

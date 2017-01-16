@@ -66,7 +66,7 @@ Onde \(C_{n}\) é o custo normalizado do n-ésimo imperialista, \(c_{n}\) é o c
 
 \begin{equation}
 \label{eq:ica5}
-P_{n} = \left| \frac{C_{n}}{\sum_{i=1}^{Nim}C_{i}}\right| 
+P_{n} = \left| \frac{C_{n}}{\sum_{i=1}^{Nimp}C_{i}}\right| 
 \end{equation}
 
 Que é basicamente o custo normalizado do enésimo imperialista dividido pela soma dos custos normalizados dentre todos os imperialistas. Sendo assim, este poder normalizado pode ser entendido como um valor que representa a porção de colônias que devem ser possuídas por aquele imperialista. Então o número de colônias de um império é definido pela equação \ref{eq:ica6}:
@@ -219,9 +219,13 @@ Este conceito mostra como a convolução é aplicada sobre duas sequências de v
 
 Esta técnica de filtragem espacial, então, pode ser representada como sendo uma transformação da imagem, de forma ponto a ponto, que dependem do valor de um determinado ponto e do valor dos pontos vizinhos na imagem original. Assim o ponto a ser filtrado terá um valor referente à região que ele se encontra na imagem original. 
 
-Assim, a filtragem por convolução pode ser efetuada como mostra a expressão:
+Assim, a filtragem por convolução pode ser efetuada como mostra a expressão \ref{eq:g=fm}:
 
-\[g = f * m\]
+%\[g = f * m\]
+\begin{equation}
+\label{eq:g=fm}
+g = f * m
+\end{equation}
 
 sendo:
 
@@ -232,13 +236,18 @@ sendo:
 \item \(*\) o operador de convolução.
 \end{itemize}
 
-Para se obter a imagem \(g\), executa-se a operação de convolução de \(m\) sobre todos os pontos da imagem \(f\), assim, um ponto \((x,y)\) da imagem \(g\) é calculado como:
+Para se obter a imagem \(g\), executa-se a operação de convolução de \(m\) sobre todos os pontos da imagem \(f\), assim, um ponto \((x,y)\) da imagem \(g\) é calculado como mostra a equação \ref{eq:convolucao}:
 	
-\[
-g(x,y) = 
-\sum_{i=\left\lfloor\frac{O}{2}\right\rfloor}^{\left\lfloor\frac{O}{2}\right\rfloor}
+%\[
+\begin{equation}
+\label{eq:convolucao}
+\begin{split}
+g(x,y) = \
+\sum_{i=\left\lfloor\frac{O}{2}\right\rfloor}^{\left\lfloor\frac{O}{2}\right\rfloor} \
 \sum_{j=\left\lfloor\frac{O}{2}\right\rfloor}^{\left\lfloor\frac{O}{2}\right\rfloor}  f(x+i, y+j) \cdot m(i,j)
-\]
+\end{split}
+\end{equation}
+%\]
 
 Sendo \(O\) a ordem da máscara de convolução, que tem altura e largura iguais a \(O\) e \(i\) e \(j\) os iteradores sobre a máscara. Tal operação de filtragem pode ser ilustrada como mostra a Figura \ref{fig:Convolution}:
 

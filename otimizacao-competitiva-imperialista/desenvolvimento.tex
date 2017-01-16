@@ -280,19 +280,28 @@ Assim termina-se a etapa de possessão imperial, que pode efetuar duas operaçõ
 
 A próxima operação, idealizada por \cite{roche2011imperialist}, é uma das adições ao fluxo normal do ICA e diz respeito a união de dois impérios próximos. Esta funcionalidade agiliza o processo de convergência, pois quando dois impérios se aproximam e ambos possuem muitas colônias, seriam necessárias diversas décadas até que o império mais forte conseguisse assimilar por completo o império mais fraco, utilizando-se apenas a competição imperialista, tomando colônia por colônia.
 
-Esta operação calcula um valor de limiar para união de dois impérios, sendo que este valor é definido com o valor armazenado em \emph{UnitingThreshold} vezes a norma do do vetor que contém os valores dos tamanhos do espaço de busca de cada dimensão, representado por \emph{SpaceSearchSize}, então tem-se que 
+Esta operação calcula um valor de limiar para união de dois impérios, sendo que este valor é definido com o valor armazenado em \emph{UnitingThreshold} vezes a norma do do vetor que contém os valores dos tamanhos do espaço de busca de cada dimensão, representado por \emph{SpaceSearchSize}, então tem-se que o limiar é definido como mostra a equação \ref{eq:icaLimiar}: 
 
-\[Limiar = UnitingThreshold \cdot Norma2(SpaceSearchSize) \]
+\begin{equation}
+\label{eq:icaLimiar}
+Limiar = UnitingThreshold \cdot Norma2(SpaceSearchSize) 
+\end{equation}
+%\[Limiar = UnitingThreshold \cdot Norma2(SpaceSearchSize) \]
 
 Com o limiar já calculado, itera-se por cada império comparando-o com os demais impérios. Para comparar um império com outro, e de fato iniciar o processo de união, deve-se antes calcular a distância entre ambos, e se esta distância for menor que o limiar definido acima, unem-se os dois impérios. Assim, a operação de união entre impérios é muito semelhante com a operação de eliminação de um império, apenas adicionando a transferência das colônias do império mais fraco para o mais forte. Nota-se que este método exige a referência do vetor \emph{IdEmpires} para que ele possa ser alterado também no escopo (global) em que este método fora chamado.
 
 Por fim, o último método a ser chamado é o responsável por executar a competição imperialista, removendo a pior colônia do pior império e dando esta colônia para o império mais propenso a possuí-la. Nota-se novamente que este método também exige a referência do vetor \emph{IdEmpires} para que ele possa ser alterado também no escopo em que este método foi chamado, pois assim que uma tomada de colônia ocorrer, pode acontecer de um império ficar sem colônias, então a eliminação deste império ocorrerá logo após a tomada (ou tentativa de tomada) de uma colônia deste império.
 
-Os detalhes do que ocorre dentro deste método podem ser vistos no fluxograma da Imagem \ref{fig:Fluxograms-RunMethodImperialistCompetition}. Observe que antes mesmo de se iniciar o processo, existem duas verificações sendo a primeira a verificação da chance de ocorrência da competição nesta década, e a segunda é a verificação de certificação por número de impérios (obviamente é necessário que existam no mínimo 2 impérios para que se ocorra a competição imperialista). Logo após as verificações calcula-se o poder total de todos os impérios baseando-se no seu custo e em uma proporção da média dos custos de suas colônias, como pode-se ver no trecho abaixo.
+Os detalhes do que ocorre dentro deste método podem ser vistos no fluxograma da Imagem \ref{fig:Fluxograms-RunMethodImperialistCompetition}. Observe que antes mesmo de se iniciar o processo, existem duas verificações sendo a primeira a verificação da chance de ocorrência da competição nesta década, e a segunda é a verificação de certificação por número de impérios (obviamente é necessário que existam no mínimo 2 impérios para que se ocorra a competição imperialista). Logo após as verificações calcula-se o poder total de todos os impérios baseando-se no seu custo e em uma proporção da média dos custos de suas colônias, como pode-se ver na equação \ref{eq:posprob}.
 
-\[
-possessionProbability[i] = \frac{power[i]}{ \sum(power)}, i : 0 \space até\space nImp
-\]
+\begin{equation}
+\label{eq:posprob}
+possessionProbability[i] = \frac{power[i]}{ \sum(power)}, i : 0 \ \textrm{até} \ nImp
+\end{equation}
+
+%\[
+%possessionProbability[i] = \frac{power[i]}{ \sum(power)}, i : 0 \ \textrm{até} \ nImp
+%\]
 
 Com o poder total de cada império calculado e armazenado no vetor \emph{power} seleciona-se qual é o império mais fraco, e em seguida normaliza-se os custos totais, sobrescrevendo os valores do vetor \emph{power}, e calcula-se o vetor de probabilidade de possessão \emph{possessionProbability}.
 
@@ -394,12 +403,14 @@ F(X,Y) = -18.55422.
 
 Este teste apresentou um erro muito menor que 1\%, calculado a seguir: 
 
-\[
-e = Abs(Valor Esperado - Valor Obtido ) = Abs((-18.5547) - (-18.55422)) = 0.00048
-\]
-\[
+\begin{equation}
+\begin{split}
+e = Abs(Valor Esperado - Valor Obtido ) 
+\\= Abs((-18.5547) - (-18.55422)) = 0.00048 \\
 e\%= 0.00258695\%
-\]
+\end{split}
+\end{equation}
+
 
 
 O problema G2 exige uma função de avaliação mais complexa, e se dá no seguinte cenário: Dadas duas imagens, sendo que a segunda (I') é a imagem resultado da passagem de um filtro de convolução (M) qualquer sobre a primeira imagem(I), o objetivo do ICA é encontrar qual foi o filtro (máscara de convolução) utilizado neste processamento. O nível de complexidade deste problema é altíssimo, por este ser um problema de inversão de uma função que quando aplicada pode ocasionar em perda ou geração de informação ou ruído no seu resultado, tornando impossível a descoberta do filtro de uma forma direta. A princípio, nos exemplos, foram utilizados apenas filtros de ordem 3 e imagens em escala de cinza(I e I'), todos representados por matrizes de valores.
@@ -590,7 +601,7 @@ Apenas com o uso da função que gera valores aleatórios de distribuição tria
 	\label{fig:RandomTriangular-White}
 \end{figure}
 
-A Figura\ref{fig:Movimento_Refinado}, analogamente a Figura\ref{fig:Movimento_Original}  apresenta 4 configurações diferentes para a busca da melhor solução, na qual as três primeiras são com a operação de possessão imperial desabilitada e a última tem esta funcionalidade habilitada. Observa-se que as imagens são muito parecidas, portanto agora existe um controle muito mais preciso sobre a intensidade  do ruído a ser gerado, sendo que os valores para p foram de 0.1, 0.4 e 0.8 para os resultados \(a\), \(b\) e \(c\) respectivamente, e em \(d\) foi utilizado p = 0.1 e a operação de possessão imperial estava habilitada. Em comparação com o modelo original, ao utilizar o método refinado, ocorrem aproximadamente 10\% mais possessões imperiais, ou seja, aumentaram-se as chances de uma colônia se mover para uma posição melhor que a de seu país imperialista em 10\% durante esta etapa de movimentação.
+A Figura\ref{fig:Movimento_Refinado}, analogamente a Figura \ref{fig:Movimento_Original}  apresenta 4 configurações diferentes para a busca da melhor solução, na qual as três primeiras são com a operação de possessão imperial desabilitada e a última tem esta funcionalidade habilitada. Observa-se que as imagens são muito parecidas, portanto agora existe um controle muito mais preciso sobre a intensidade  do ruído a ser gerado, sendo que os valores para p foram de 0.1, 0.4 e 0.8 para os resultados \(a\), \(b\) e \(c\) respectivamente, e em \(d\) foi utilizado p = 0.1 e a operação de possessão imperial estava habilitada. Em comparação com o modelo original, ao utilizar o método refinado, ocorrem aproximadamente 10\% mais possessões imperiais, ou seja, aumentaram-se as chances de uma colônia se mover para uma posição melhor que a de seu país imperialista em 10\% durante esta etapa de movimentação.
 
 \begin{figure}[htp]
 	\centering
@@ -691,10 +702,15 @@ Concluindo esta seção, tem-se agora três (Refinado, Visão imperial distorcid
 Algoritmos evolutivos têm como parte essencial para convergência a função de aptidão, que deve ser bem definida e voltada para o problema. Tal função, deve ser executada durante todas as décadas. No ICA, a função de aptidão proposta foi definida de forma a executar cálculos os quais resultam em um valor de custo para o país, tal que este custo seja utilizado por todos os componentes do ICA, a fim de buscar pela melhor solução. A quantidade de chamadas à função de aptidão é dependente basicamente de dois valores, do número de países \(np\) e número de décadas \(nd\). 
 
 
-Sabendo que os países sempre são avaliados, todos de uma só vez, e que em cada década todos os países devem ter seu valor de custo calculado, pode-se dizer que em cada década seus atributos se modificam de acordo com a posição de seus impérios. E ainda, leva-se em conta que inicialmente todos os países são avaliados e têm seus custos atribuídos, antes mesmo da separação entre colônias e impérios. Desta forma, é possível calcular a quantidade total de chamadas da função de aptidão durante uma execução completa do ICA como sendo:
+Sabendo que os países sempre são avaliados, todos de uma só vez, e que em cada década todos os países devem ter seu valor de custo calculado, pode-se dizer que em cada década seus atributos se modificam de acordo com a posição de seus impérios. E ainda, leva-se em conta que inicialmente todos os países são avaliados e têm seus custos atribuídos, antes mesmo da separação entre colônias e impérios. Desta forma, é possível calcular a quantidade total de chamadas da função de aptidão durante uma execução completa do ICA como a expressão \ref{eq:quantidade de chamadas fitness}:
 
 
-\[np x (nd + 1)\]
+%\[
+\begin{equation}
+\label{eq:quantidade de chamadas fitness}
+np \times (nd + 1)
+\end{equation}
+%\]
 
 
 Dependendo do tipo de problema, algoritmos evolutivos podem levar diversas épocas, no caso do ICA, décadas, para convergir em uma solução dentro dos critérios de parada (que foram definidas no capítulo x). Em casos cujo problema se expande para o domínio não linear existe a possibilidade de executar tais operações muito mais vezes do que o esperado para se chegar ao resultado. 
@@ -810,19 +826,21 @@ MapaMatriz(x,y) = MapaMatriz(x,y) +\\ MultiplicadorCarga[linha.Grupo] *\\ linha.
  
 Este processo ocorre para cada linha de cada arquivo de períodos, e no fim da leitura de cada arquivo tem-se um mapa matriz que representa a região no mesmo período do arquivo. E por fim, todos os mapas matrizes gerados são adicionados em uma lista sequencial referente aos períodos.
 
-Com a lista de mapas matrizes calculada, pode-se então definir um vetor que represente o crescimento absoluto entre cada período, fazendo a diferença entre o mapa matriz do período \(t\) com o mapa matriz do período \(t+1\), tendo assim, os valor de crescimento de \(t\) para \(t+1\), de \(t+1\) para \(t+2\), de \(t+p-1\) para \(t+p\), sendo \(p\) o número total de períodos selecionados. Assim o vetor é representado pela expressão:
+Com a lista de mapas matrizes calculada, pode-se então definir um vetor que represente o crescimento absoluto entre cada período, fazendo a diferença entre o mapa matriz do período \(t\) com o mapa matriz do período \(t+1\), tendo assim, os valor de crescimento de \(t\) para \(t+1\), de \(t+1\) para \(t+2\), de \(t+p-1\) para \(t+p\), sendo \(p\) o número total de períodos selecionados. Assim o vetor é representado pela expressão \ref{eq:CrescimentoAbs}:
 
 \begin{equation}
 \label{eq:CrescimentoAbs}
-\centering
 \begin{split}
-CrescimentoAbs =
-\\ [
+CrescimentoAbs =& \\
+&\begin{bmatrix}
 \\ mapaMatriz[t] - mapaMatriz[t+1], 
 \\ mapaMatriz[t+1] - mapaMatriz[t+2], 
 \\ ...,
 \\ mapaMatriz[t+p-1] - mapaMatriz[t+p]
-\\ ], \\ \\ 0<t<p-1, \\ p = número total de períodos. 
+\end{bmatrix}
+\\ 
+\\ &0<t<(p-1),
+\\ &p = número \  total \ de \ períodos. 
 \end{split}
 \end{equation}
 
@@ -989,7 +1007,7 @@ Cada país usa a implementação padrão da classe \emph{Country} do ICA, sem ne
 A Figura \ref{fig:VetorAtributosForecast-Ingles} ilustra como os valores são dispostos no vetor de atributos do país. Observe que primeiro vem o valor de ponderação e em seguida vem os valores da máscara de convolução, formando um bloco. O número de blocos é dependente da quantidade de ponderações que se deseja gerar para um mapa, e o tamanho de cada bloco depende da ordem da matriz de convolução.
 
 \begin{figure}[h]
-	\centering	\includegraphics[scale=0.45]{Figuras/VetorAtributosForecast-Ingles.png}
+	\centering	\includegraphics[scale=0.49]{Figuras/VetorAtributosForecast-Ingles.png}
 	\caption{Vetor de atributos do país.}
 	\label{fig:VetorAtributosForecast-Ingles}
 \end{figure}
