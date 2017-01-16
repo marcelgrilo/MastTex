@@ -7,7 +7,7 @@
 
 \section{Contexto}
 
-As metodologias de previsão espacial dividem a área de estudo em pequenas subáreas, que podem ter tamanhos e formas distintas, ou podem ser subáreas homogêneas e de lados iguais (quadrículas) e quadradas. As quadrículas são usadas para formar uma grade, ou um mapa de quadrículas, que  apresenta vantagens em relação às outras formas de divisão, pela possibilidade de se aumentar a resolução, dependendo apenas da entrada de dados.
+As metodologias de previsão espacial dividem a área de estudo em pequenas subáreas, que podem ter tamanhos e formas distintas ou podem ser subáreas retangulares e homogêneas chamadas quadrículas. As quadrículas são usadas para formar uma grade ou um mapa de quadrículas, que  apresenta vantagens em relação às outras formas de divisão, como por exemplo, a possibilidade de se aumentar a resolução, dependendo apenas da entrada de dados, sendo computacionalmente mais simples de serem adaptadas.
 
 Tal  divisão em mapa de quadrículas (grade) tem sido aplicada em diversos métodos de previsão espacial de carga \cite{willis2002spatial}, \cite{melo2012multi}, \cite{arango2004spatial}. Assim é possível obter uma representação gráfica, em forma de uma imagem, da distribuição de densidade de cargas, de modo a determinar um crescimento, seja de carga ou de qualquer outra forma de densidade em um ponto da grade, que seja esperado para aquela pequena área. 
 
@@ -40,9 +40,9 @@ Em resumo, apresenta-se uma técnica capaz de fazer previsão espacial de densid
 
 \section{Objetivos}
 
-O objetivo deste trabalho é efetuar a previsão de densidade espacial genérica (qualquer que seja o parâmetro analisado, densidade de carga, densidade populacional, etc.) sobre um período curto de tempo (de 6 meses a 5 anos), com capacidade de previsão sobre dados dispostos em alta resolução.
+O objetivo deste trabalho é efetuar a previsão de densidade espacial genérica (qualquer que seja o parâmetro analisado, densidade de carga, densidade populacional, etc.) de médio prazo e com capacidade de previsão sobre dados dispostos em alta resolução.
 
-Para isto, desenvolve-se uma metodologia capaz de traduzir um conjunto de dados para um histórico de mapas de uma localização que então serão processados por um algoritmo evolutivo, que irá gerar indivíduos capazes de gerar previsões de 1 ou mais períodos a frente com vantagem sobre os modelos estatísticos convencionais. 
+Para isto, desenvolve-se uma metodologia robusta capaz de traduzir um conjunto de dados para um histórico de mapas de uma localização, que então serão processados por um algoritmo evolutivo, que irá gerar indivíduos capazes de gerar previsões de 1 ou mais períodos a frente com vantagem sobre os modelos estatísticos convencionais. 
 
 Mais especificamente, este trabalho aborda os seguintes tópicos:
 \begin{itemize}

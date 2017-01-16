@@ -47,4 +47,4 @@
 \contentsline {section}{\numberline {5.1}Colabora\IeC {\c c}\IeC {\~o}es do Trabalho}{120}{section.5.1}
 \contentsline {section}{\numberline {5.2}Trabalhos Futuros}{120}{section.5.2}
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{\uppercase {Refer\^encias}}{122}{section*.10}
+\contentsline {chapter}{\uppercase {Refer\^encias}}{121}{section*.10}
