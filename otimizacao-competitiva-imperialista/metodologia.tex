@@ -3,11 +3,11 @@
 %\externaldocument[met-]{metodologia}
 
 
-Neste capítulo são apresentados os conceitos do algoritmo imperialista competitivo e a apresentação da operação de convolução e a convolução de imagens, seguidos de uma breve análise sobre estes assuntos, direcionando como estes conceitos serão aplicados na busca da solução para o problema proposto.
+Neste capítulo são apresentados os conceitos do algoritmo imperialista competitivo, a apresentação da operação de convolução e a convolução de imagens e a apresentação do Previsor Espacial de Mapas de Densidade, seguidos de uma breve análise sobre estes assuntos, direcionando como estes conceitos serão aplicados na busca da solução para o problema proposto.
 
 \section{Algoritmo Imperialista Competitivo}
 
-O algoritmo imperialista competitivo \cite{atashpaz2007imperialist} (ou ICA - \emph{Imperialist Competitive Algorithm} em inglês) é um algoritmo evolutivo baseado na ideia da disputa entre impérios pela extensão de seus domínios para além de seus territórios. Para que um império aumente seu poder ele deve aplicar sua influência sob mais territórios dominando-os e assimilando-os. Territórios dominados por países imperialistas são chamados de colônias, e um império é denominado pelo conjunto formado por um país imperialista e suas colônias.
+O algoritmo imperialista competitivo \cite{atashpaz2007imperialist} (ou ICA - \emph{Imperialist Competitive Algorithm} em inglês) é um algoritmo de busca, caracterizado como evolutivo, e baseado na ideia da disputa entre impérios pela extensão de seus domínios para além de seus territórios, aplicável à topologias complexas e com soluções não triviais. Para que um império aumente seu poder ele deve aplicar sua influência sob mais territórios dominando-os e assimilando-os. Territórios dominados por países imperialistas são chamados de colônias, e um império é denominado pelo conjunto formado por um país imperialista e suas colônias.
 
 As colônias de um império tendem a ter suas características se assemelhando às de seu país imperialista a cada década que passa. Esta tendência pode ser vista como uma forma de movimento, ou seja, uma colônia se move em direção ao seu país imperialista de forma que suas características se pareçam mais com as dele.
 
@@ -21,7 +21,7 @@ Uma colônia pode se tornar um país imperialista quando seu poder superar o pod
 
 O resultado deste processo competitivo tende para que reste apenas um império na disputa possuindo todas as colônias, de forma que todas as colônias tenham as mesmas características se igualando às seu país imperialista.
 
-Sendo o ICA um algoritmo evolutivo, seu objetivo é encontrar uma solução dentre diversas outras, tal que esta seja ótima, em termos das variáveis do problema (dimensões) em questão.  Como pode ser visto na Figura \ref{fig:Fluxograms-ICACanonic} antes de começar o processo evolutivo, deve-se inicializar os países formando os impérios e as suas respectivas colônias. Sendo assim, inicialmente deve-se definir a estrutura básica de um país que, analogamente a um cromossomo presente no algoritmo genético canônico (GA - \emph{Genetic Algorithm}), usa um vetor de valores de dimensão \(1xN_{var}\) apresentado pela equação \ref{eq:ica1}:
+Sendo o ICA um algoritmo de busca, seu objetivo é encontrar uma solução dentre diversas outras, tal que esta seja ótima, em termos das variáveis do problema (dimensões) em questão.  Como pode ser visto na Figura \ref{fig:Fluxograms-ICACanonic} antes de começar o processo evolutivo, deve-se inicializar os países formando os impérios e as suas respectivas colônias. Sendo assim, inicialmente deve-se definir a estrutura básica de um país que, analogamente a um cromossomo presente no algoritmo genético canônico (GA - \emph{Genetic Algorithm}), usa um vetor de valores de dimensão \(1xN_{var}\) apresentado pela equação \ref{eq:ica1}:
 
 \begin{equation}
 \label{eq:ica1}
@@ -62,7 +62,7 @@ Para a distribuição  das \(N_{col}\) colônias para os \(N_{imp} \) imperialis
 C_{n} =  c_{n} - maxi{c_{i}}
 \end{equation}
 
-Onde \(C_{n}\) é o custo normalizado do n-ésimo imperialista, \(c_{n}\) é o custo normalizado deste enésimo imperialista, e a operação \(maxi{c_{i}}\) representa o valor máximo dos custos dentre todos os países. Assim, pode-se definir o poder normalizado de cada país imperialista como mostra a equação \ref{eq:ica5}:
+Onde \(C_{n}\) é o custo atual do n-ésimo imperialista, \(c_{n}\) é o custo normalizado deste enésimo imperialista, e a operação \(maxi{c_{i}}\) representa o valor máximo dos custos dentre todos os países. Assim, pode-se definir o poder normalizado de cada país imperialista como mostra a equação \ref{eq:ica5}:
 
 \begin{equation}
 \label{eq:ica5}
@@ -78,7 +78,7 @@ N.C.n = arredondamento ( P_{n} \cdot N_{col})
 
 Sendo \(N.C.n\) o número inicial de colônias do enésimo imperialista.
 
-Com os impérios já formados, contendo um país imperialista e suas colônias, a sequencia do fluxograma indica que as colônias de um império devem se movimentar em direção ao seu país imperialista, como pode ser visto na Figura\ref{fig:Ilustrations-ColonyEmpireMove}. O movimento de uma colônia até seu imperialista deve ser calculado considerando um fator aleatório e um fator de controle de intensidade, sendo que o fator aleatório pode ser de distribuição uniforme (ou qualquer outra que seja apropriada a situação) e  o fator de controle de intensidade deve ser relativo ao império, portanto usa-se a distância entre o imperialista e a colônia. Assim, tem-se que um valor \(x\), representado o movimento que será efetuado pela colônia, seja o produto vetorial entre a distância e o fator aleatório, como mostrado na equação \ref{eq:ica7} a seguir:
+Com os impérios já formados, contendo um país imperialista e suas colônias, a sequencia do fluxograma indica que as colônias de um império devem se movimentar em direção ao seu país imperialista, como pode ser visto na Figura \ref{fig:Ilustrations-ColonyEmpireMove}. O movimento de uma colônia até seu imperialista deve ser calculado considerando um fator aleatório e um fator de controle de intensidade, sendo que o fator aleatório pode ser de distribuição uniforme (ou qualquer outra que seja apropriada a situação) e  o fator de controle de intensidade deve ser relativo ao império, portanto usa-se a distância entre o imperialista e a colônia. Assim, tem-se que um valor \(x\), representado o movimento que será efetuado pela colônia, seja o produto vetorial entre a distância e o fator aleatório, como mostrado na equação \ref{eq:ica7} a seguir:
 
 \begin{equation}
 \label{eq:ica7}
@@ -94,7 +94,7 @@ Sendo \(\beta\) um valor aleatório maior que 1 e \(d\) a distância absoluta en
 	\label{fig:Ilustrations-ColonyEmpireMove}
 \end{figure}
 
-Usa-se \(\beta\) maior que 1 por resultar em um efeito elástico no espaço de busca, fazendo que uma colônia se aproxime de seu imperialista explorando ambos os lados como pode ser visto na Figura \ref{fig:Ilustrations-BetaComparison}. 
+Usa-se \(\beta\) maior que 1 por resultar em um efeito elástico no espaço de busca, fazendo que uma colônia se aproxime de seu imperialista explorando ambos os lados da dimensão como pode ser visto na Figura \ref{fig:Ilustrations-BetaComparison}. 
 
 \begin{figure}[h]
 	\centering	
@@ -103,14 +103,14 @@ Usa-se \(\beta\) maior que 1 por resultar em um efeito elástico no espaço de b
 	\label{fig:Ilustrations-BetaComparison}
 \end{figure}
 
-Para que se tenha uma busca mais diferenciada, e que explore pontos mais diferenciados ao redor do país imperialista, ainda há a adição de um valor aleatório de desvio na direção do movimento , como mostrado na Figura \ref{fig:Ilustrations-ColonyEmpireMoveWithDistortion}. \(\theta\) é um outro valor aleatório de distribuição uniforme(ou qualquer outra que seja apropriada a situação), tal que seus limites sejam inversos e de mesma intensidade Gama, como:
+Para que se tenha uma busca mais diferenciada, e que explore pontos mais diferenciados ao redor do país imperialista, ainda há a adição de um valor aleatório de desvio na direção do movimento , como mostrado na Figura \ref{fig:Ilustrations-ColonyEmpireMoveWithDistortion}. \(\theta\) é um outro valor aleatório de distribuição uniforme (ou qualquer outra que seja apropriada a situação), tal que seus limites sejam inversos e de mesma intensidade Gama, como:
 
 \begin{equation}
 \label{eq:ica8}
 \theta = URand(-\gamma, \gamma)
 \end{equation}
 
-Onde \(\gamma\) é o parâmetro de ajuste de desvio da direção original. Sendo assim, a nova posição da colônia pode ser entendida como um ponto aleatório proporcional a distância entre esta colônia e seu imperialista, que explora as redondezas do imperialista limitando-se na distância e com a adição de um ruído para a exploração mais dinâmica do espaço de busca.
+Onde \(\gamma\) é o parâmetro de ajuste de desvio da direção original. Sendo assim, a nova posição da colônia pode ser entendida como um ponto aleatório proporcional a distância entre esta colônia e seu imperialista, que explora as redondezas do império limitando-se na distância e com a adição de um ruído para a exploração mais dinâmica do espaço de busca.
 
 \begin{equation}
 \label{eq:ica9}
@@ -124,7 +124,7 @@ Onde \(\gamma\) é o parâmetro de ajuste de desvio da direção original. Sendo
 	\label{fig:Ilustrations-ColonyEmpireMoveWithDistortion}
 \end{figure}
 
-Este processo de movimentação é executado para todas as colônias de cada país imperialista, assim que todas as colônias terminam sua movimentação, ainda é possível haver o que é chamado de processo de revolução, ou apenas revolução, que é uma operação muito semelhante a operação de mutação no GA, onde todas as características (valores do vetor país) da colônia são geradas novamente de forma aleatória.
+Este processo de movimentação é executado para todas as colônias de cada país imperialista, assim que todas as colônias terminam sua movimentação, ainda é possível haver o que é chamado de processo de revolução colonial, ou apenas revolução, que é uma operação muito semelhante a operação de mutação no AG, onde todas as características (valores do vetor país) da colônia são geradas novamente de forma aleatória.
 
 A segunda etapa, seguindo o fluxograma, faz a verificação dentre todos os imperialistas se uma de suas colônias possui características melhores que seu país imperialista, assim a colônia passa a ser o país imperialista tomando todas as colônias deste antigo imperialista em questão e inclusive, tornando este país imperialista uma colônia. Situações como esta ocorrem quando a colônia ao mover em direção ao seu país imperialista acaba se posicionando em um local onde suas características passam a apresentar um custo menor que o custo de seu país imperialista, como pode ser visto na Figura \ref{fig:Ilustrations-ColonialRevolution}. Nesta mesma figura, observa-se o movimento de colônias em direção ao seu país imperialista (quadro 1), e quando uma colônia passa por uma posição melhor que a de seu país imperialista (quadro 2), ela altera a sua cor e inicia o processo de tomada do império para si, se tornando o novo império, assimilando as colônias do antigo império e consequentemente transformando este antigo imperialista em uma colônia (quadro 3). Posteriormente, observa-se que as colônias passam a se movimentar em direção a este novo imperialista (quadro 4).
 
@@ -135,7 +135,7 @@ A segunda etapa, seguindo o fluxograma, faz a verificação dentre todos os impe
 	\label{fig:Ilustrations-ColonialRevolution}
 \end{figure}
 
-Em seguida, o próximo passo, após as trocas entre impérios e colônias(caso existam), é o cálculo de todos os custos totais dos impérios, que também leva em consideração o valor do custo de suas colônias. Assim, define-se custo total de um império, como sendo a soma entre o custo do país imperialista mais uma porção da média dos custos das colônias pertencentes a este império, definido pela equação \ref{eq:ica10}:
+Em seguida, o próximo passo, após as trocas entre impérios e colônias (caso existam), é o cálculo de todos os custos totais dos impérios, que também leva em consideração o valor do custo de suas colônias. Assim, define-se custo total de um império, como sendo a soma entre o custo do país imperialista mais uma porção da média dos custos das colônias pertencentes a este império, definido pela equação \ref{eq:ica10}:
 
 \begin{equation}
 \label{eq:ica10}
@@ -184,7 +184,7 @@ Os índices dos vetores \(P\), \(R\) e \(D\) representam os índices dos impéri
 
 Assim que a colônia mais fraca do império mais fraco é passada para o vencedor da competição imperialista, é feita uma verificação dentre todos os impérios, que elimina aqueles impérios que não mais possuem colônias, e portanto não mais participarão das competições imperialistas e entram em colapso. O fato de eliminar o império assim que ele não possua mais colônias é só um critério que define o colapso, porém outros fatores podem fazer um império colapsar, de modo que as colônias deste tenham que ser distribuídas para os demais impérios.
 
-O último passo do Fluxograma é a verificação das condições de parada para decidir se finaliza o algoritmo ou se repete os passos a partir do movimento das colônias para seus imperialistas. As condições de parada podem ser diversas, como número máximo de iterações (ou décadas, contextualizando), valor de custo atingido, etc.  Entretanto a condição de parada ideal para convergência do ICA deve ocorrer quando restar apenas um império e todos os demais países serem colônias pertencentes ao país imperialista. Ao considerar um cenário ideal, no qual existe apenas um império, e todas as suas colônias se situam na mesma posição de seu país imperialista, não existirá diferença nenhuma entre as colônias, e a única diferença existente entre as colônias e o império serão seus títulos.Assim, a condição de parada ideal para o ICA, em uma situação normal(não ideal), seria esperar que reste apenas um império, e ainda, se preciso, pode-se também esperar para que todas as colônias se movimentam para a posição de seu país imperialista, refinando ainda mais a solução.
+O último passo do Fluxograma é a verificação das condições de parada para decidir se finaliza o algoritmo ou se repete os passos a partir do movimento das colônias para seus imperialistas. As condições de parada podem ser diversas, como número máximo de iterações (ou décadas, contextualizando), valor de custo atingido, etc. Entretanto a condição de parada ideal para convergência do ICA (verificada a cada década) deve ocorrer quando restar apenas um império e todos os demais países forem colônias pertencentes ao país imperialista. Ao considerar um cenário ideal, no qual existe apenas um império, e todas as suas colônias se situam na mesma posição de seu país imperialista, não existirá diferença nenhuma entre as colônias, e a única diferença existente entre as colônias e o império serão seus títulos.Assim, a condição de parada ideal para o ICA, em uma situação normal(não ideal), seria esperar que reste apenas um império, e ainda, se preciso, pode-se também esperar para que todas as colônias se movimentam para a posição de seu país imperialista, refinando ainda mais a solução.
 
 
 
@@ -199,9 +199,9 @@ O último passo do Fluxograma é a verificação das condições de parada para 
    
 A convolução é um operador matemático formal assim como a operação de soma ou subtração. Tal operação é uma operação linear, que é executada sobre duas funções dadas e resulta em uma terceira, a qual será a área super posicionada das mesmas em função do deslocamento existente entre ambas.
 
-Este operador tem sido amplamente utilizado em diversas áreas, sendo utilizado em aplicações como processamento de sinais e imagens, circuitos elétricos, telecomunicações, probabilidades e estatísticas, entre outras. No caso deste trabalho aplica-se a convolução para o processamento de imagens(também conhecido como filtragem no domínio do espaço), sobre uma metodologia diferente do convencional, descrita mais adiante, de modo que os resultados da aplicação de um filtro \(g\), que \emph{convoluciona} por toda uma imagem \(f(t)\) sejam os mais próximos possíveis de uma previsão futura de expansão, \(f'(t+1)\), tal que \(f(t+1)\) seja uma imagem um período à frente de \(f(t)\).
+Este operador tem sido amplamente utilizado em diversas áreas, sendo aplicado em áreas como processamento de sinais e imagens, circuitos elétricos, telecomunicações, probabilidades e estatísticas, entre outras, visando a filtragem e detecção de características em sinais ou imagens. No caso deste trabalho aplica-se a convolução para o processamento de imagens (também conhecido como filtragem no domínio do espaço), sobre uma metodologia diferente do convencional, descrita mais adiante, de modo que os resultados da aplicação de um filtro \(g\), que \emph{convoluciona} por toda uma imagem \(f(t)\) sejam os mais próximos possíveis de uma previsão futura de expansão, \(f'(t+1)\), tal que \(f(t+1)\) seja uma imagem um período à frente de \(f(t)\).
 
-Em a origem e história da convolução \cite{dominguez2010origin}, são apresentadas diversas definições matemáticas sobre a operação de convolução, e neste caso, o que nos interessa é a convolução discreta, que tem seu conceito aplicado no processamento de imagens como:
+Em A Origem e História da Convolução \cite{dominguez2010origin}, são apresentadas diversas definições matemáticas sobre a operação de convolução, e neste caso, o que nos interessa é a convolução discreta, que tem seu conceito aplicado no processamento de imagens como:
 
 \begin{citacao}
 Seja \(\{x_{i}\}\) e \(\{y_{i}\}\) duas sequências de valores reais ou complexos tal que \(-\infty \textless i \textless \infty\). A convolução discreta dessas sequências resulta em uma nova sequência definida pela expressão:
@@ -249,7 +249,7 @@ g(x,y) = \
 \end{equation}
 %\]
 
-Sendo \(O\) a ordem da máscara de convolução, que tem altura e largura iguais a \(O\) e \(i\) e \(j\) os iteradores sobre a máscara. Tal operação de filtragem pode ser ilustrada como mostra a Figura \ref{fig:Convolution}:
+Sendo \(O\) a ordem da máscara de convolução, que tem altura e largura iguais a \(O\) e \(i\) e \(j\) os iteradores sobre a máscara. Tal operação de filtragem pode ser ilustrada como mostra a Figura \ref{fig:Convolution}, que apresenta uma matriz \emph{m} convoluindo uma matriz \emph{f} para gerar uma matriz \emph{g}:
 
 \begin{figure}[h]
 	\centering	
@@ -300,4 +300,23 @@ Inicializar g como uma nova matriz[w][h] com zeros\;
 
 O algoritmo apresentado é o mais simples possível, e é otimizado para a rápida execução da tarefa, portanto ele não apresenta alguns recursos extras, que geralmente aparecem em algoritmos de convolução de imagens digitais, como a adição de um fator de multiplicação \(r\) e de um fator de soma \(baias\), que altera a imagem resultante g gerada, de modo que o fator \(r\), geralmente dentro do intervalo \([0,1]\), multiplica todos os elementos da imagem após o cálculo do ponto, e analogamente, o fator de soma \(baias\), que soma todos os elementos calculados da imagem resultante \(g\).  Tais fatores, no caso deste trabalho não são necessários, pois a matriz de convolução será gerada a partir de um algoritmo evolutivo, que já integra tais valores nos próprios elementos da matriz de convolução, caso seja necessário. Outro fato interessante a se analisar é que este algoritmo utiliza muito processamento e é diretamente dependente do tamanho da imagem e da máscara de convolução, pois, tomando como exemplo uma matriz de tamanho 5x5 e uma imagem 100x100, haverão 250000 multiplicações e 250000 somas para gerar a imagem final como resultado da convolução entre a imagem e a matriz.
 
-Os filtros ou matrizes de convolução, quando aplicados sobre imagens, utilizando a técnica mostrada anteriormente tem diversas aplicações, como nas áreas de pré-processamento, remoção de ruídos, segmentação, suavização, detecção de bordas, etc.. No caso deste trabalho, é apresentado uma nova aplicação, dentro de uma metodologia que leva a geração de uma imagem resultante a qual representará uma imagem futura a partir de imagens anteriores.
+Os filtros ou matrizes de convolução, quando aplicados sobre imagens, utilizando a técnica mostrada anteriormente tem diversas aplicações, como nas áreas de pré-processamento, remoção de ruídos, segmentação, suavização, detecção de bordas etc. No caso deste trabalho, é apresentado uma nova aplicação, dentro de uma metodologia que leva a geração de uma imagem resultante a qual representará uma imagem futura a partir de imagens anteriores.
+
+
+\section{Previsor Espacial de Mapas de Densidade}
+
+Este trabalho propõe o desenvolvimento de uma aplicação chamada Previsor Espacial de Mapas de Densidade (P.E.M.D.) para que sejam gerados mapas de previsão utilizados como fatores essenciais em planejamentos de expansão.
+
+O previsor Espacial de Mapas de Densidade utiliza como entrada um conjunto de dados dispostos em uma tabela, de modo que tais dados representem fatores de Posição geográfica, Data, Tipo e Quantidade. os fatores Tipo e Quantidade podem ser utilizados de forma combinada para alterar o valor de intensidade cada quadrícula do histórico de mapas a ser gerado, possibilitando assim que tal histórico de mapas de quadrículas seja utilizado para gerar mapas de previsão futura.
+
+A aplicação consiste nas etapas de:
+\begin{itemize}
+	\item Criação do histórico de mapas de quadrículas,
+	\item Regionalização do histórico do mapa de quadrículas,
+	\item Otimização dos parâmetros de previsão utilizando o ICA,
+	\item Utilização dos parâmetros de previsão para geração de previsões futuras utilizando o último mapa do histórico de mapas como mapa base das previsões.
+\end{itemize}    
+
+Um dos grandes desafios do previsor é a criação da função de previsão, que neste caso é baseada na operação de convolução, e que utilizará um mapa de quadrículas e um conjunto de fatores de previsão para gerar um mapa previsto de um período à frente do mapa base.
+
+O conjunto de fatores de previsão utilizado pela função de previsão é otimizado pelo ICA, que em sua função de avaliação, faz uma análise do histórico do mapa de quadrículas criando uma espécie de regressão linear espacial, minimizando as diferenças entre os períodos com o ajuste dos fatores de previsão.

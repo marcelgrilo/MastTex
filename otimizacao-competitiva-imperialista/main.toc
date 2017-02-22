@@ -12,39 +12,44 @@
 \contentsline {chapter}{Sum\'ario}{11}{section*.8}
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {1}\MakeTextUppercase {Introdu\IeC {\c c}\IeC {\~a}o}}{13}{chapter.1}
-\contentsline {section}{\numberline {1.1}Contexto}{13}{section.1.1}
-\contentsline {section}{\numberline {1.2}Objetivos}{16}{section.1.2}
-\contentsline {section}{\numberline {1.3}Revis\IeC {\~a}o Bibliogr\IeC {\'a}fica}{16}{section.1.3}
-\contentsline {section}{\numberline {1.4}Estrutura da Disserta\IeC {\c c}\IeC {\~a}o}{24}{section.1.4}
+\contentsline {section}{\numberline {1.1}Contexto da Previs\IeC {\~a}o Espacial}{14}{section.1.1}
+\contentsline {section}{\numberline {1.2}Motiva\IeC {\c c}\IeC {\~o}es e Objetivos}{17}{section.1.2}
+\contentsline {section}{\numberline {1.3}Revis\IeC {\~a}o Bibliogr\IeC {\'a}fica}{18}{section.1.3}
+\contentsline {section}{\numberline {1.4}Estrutura da Disserta\IeC {\c c}\IeC {\~a}o}{26}{section.1.4}
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {2}\MakeTextUppercase {Metodologia}}{25}{chapter.2}
-\contentsline {section}{\numberline {2.1}Algoritmo Imperialista Competitivo}{25}{section.2.1}
-\contentsline {section}{\numberline {2.2}A opera\IeC {\c c}\IeC {\~a}o de convolu\IeC {\c c}\IeC {\~a}o e convolu\IeC {\c c}\IeC {\~a}o de imagens}{33}{section.2.2}
+\contentsline {chapter}{\chapternumberline {2}\MakeTextUppercase {Metodologia}}{28}{chapter.2}
+\contentsline {section}{\numberline {2.1}Algoritmo Imperialista Competitivo}{28}{section.2.1}
+\contentsline {section}{\numberline {2.2}A opera\IeC {\c c}\IeC {\~a}o de convolu\IeC {\c c}\IeC {\~a}o e convolu\IeC {\c c}\IeC {\~a}o de imagens}{36}{section.2.2}
+\contentsline {section}{\numberline {2.3}Previsor Espacial de Mapas de Densidade}{40}{section.2.3}
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {3}\MakeTextUppercase {Desenvolvimento}}{38}{chapter.3}
-\contentsline {section}{\numberline {3.1}ICA Orientado a Objetos}{38}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Modelagem e desenvolvimento}{40}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Exemplos de aplica\IeC {\c c}\IeC {\~a}o do ICA gen\IeC {\'e}rico}{61}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}An\IeC {\'a}lise da opera\IeC {\c c}\IeC {\~a}o de movimento do ICA}{67}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Movimento refinado}{71}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Vis\IeC {\~a}o imperial distorcida}{75}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Paraleliza\IeC {\c c}\IeC {\~a}o do ICA}{80}{section.3.3}
-\contentsline {section}{\numberline {3.4}Formula\IeC {\c c}\IeC {\~a}o do ambiente}{82}{section.3.4}
-\contentsline {section}{\numberline {3.5}Inicializa\IeC {\c c}\IeC {\~a}o do ICA}{91}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Avalia\IeC {\c c}\IeC {\~a}o dos pa\IeC {\'\i }ses}{93}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}A fun\IeC {\c c}\IeC {\~a}o de avalia\IeC {\c c}\IeC {\~a}o}{96}{subsection.3.5.2}
-\contentsline {subsubsection}{\numberline {3.5.2.1}Atributos dos Pa\IeC {\'\i }ses}{98}{subsubsection.3.5.2.1}
-\contentsline {subsection}{\numberline {3.5.3}Implementando a Fun\IeC {\c c}\IeC {\~a}o de Avalia\IeC {\c c}\IeC {\~a}o}{99}{subsection.3.5.3}
-\contentsline {subsection}{\numberline {3.5.4}A pondera\IeC {\c c}\IeC {\~a}o das matrizes de convolu\IeC {\c c}\IeC {\~a}o}{103}{subsection.3.5.4}
-\contentsline {subsection}{\numberline {3.5.5}A Etapa de Previs\IeC {\~a}o}{106}{subsection.3.5.5}
+\contentsline {chapter}{\chapternumberline {3}\MakeTextUppercase {Desenvolvimento do ICA Gen\IeC {\'e}rico}}{42}{chapter.3}
+\contentsline {section}{\numberline {3.1}ICA Orientado a Objetos}{42}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Modelagem e desenvolvimento}{44}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Exemplos de aplica\IeC {\c c}\IeC {\~a}o do ICA gen\IeC {\'e}rico}{65}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}An\IeC {\'a}lise da opera\IeC {\c c}\IeC {\~a}o de movimento do ICA}{71}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Movimento refinado}{75}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Vis\IeC {\~a}o imperial distorcida}{79}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Paraleliza\IeC {\c c}\IeC {\~a}o do ICA}{84}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Considera\IeC {\c c}\IeC {\~o}es do Desenvolvimento do ICA Gen\IeC {\'e}rico}{86}{subsection.3.3.1}
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase {Experimentos e Resultados}}{109}{chapter.4}
-\contentsline {subsection}{\numberline {4.0.1}Modelagem do ambiente}{109}{subsection.4.0.1}
-\contentsline {subsection}{\numberline {4.0.2}Testes sobre cada regi\IeC {\~a}o}{110}{subsection.4.0.2}
-\contentsline {subsection}{\numberline {4.0.3}Testes sobre todas regi\IeC {\~o}es}{111}{subsection.4.0.3}
+\contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase {Desenvolvimento da Aplica\IeC {\c c}\IeC {\~a}o P.E.M.D.}}{87}{chapter.4}
+\contentsline {section}{\numberline {4.1}Formula\IeC {\c c}\IeC {\~a}o do Ambiente}{87}{section.4.1}
+\contentsline {section}{\numberline {4.2}A fun\IeC {\c c}\IeC {\~a}o de previs\IeC {\~a}o e a pondera\IeC {\c c}\IeC {\~a}o das matrizes de convolu\IeC {\c c}\IeC {\~a}o}{97}{section.4.2}
+\contentsline {section}{\numberline {4.3}Aplicando o ICA}{101}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Modelando os pa\IeC {\'\i }ses avalia\IeC {\c c}\IeC {\~a}o}{102}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}A fun\IeC {\c c}\IeC {\~a}o de avalia\IeC {\c c}\IeC {\~a}o}{105}{subsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.2.1}Atributos dos Pa\IeC {\'\i }ses}{107}{subsubsection.4.3.2.1}
+\contentsline {subsection}{\numberline {4.3.3}Implementando a Fun\IeC {\c c}\IeC {\~a}o de Avalia\IeC {\c c}\IeC {\~a}o}{108}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}Aplicando Fun\IeC {\c c}\IeC {\~a}o de Previs\IeC {\~a}o}{113}{section.4.4}
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase {Conclus\IeC {\~a}o}}{118}{chapter.5}
-\contentsline {section}{\numberline {5.1}Colabora\IeC {\c c}\IeC {\~o}es do Trabalho}{120}{section.5.1}
-\contentsline {section}{\numberline {5.2}Trabalhos Futuros}{120}{section.5.2}
+\contentsline {chapter}{\chapternumberline {5}\MakeTextUppercase {Experimentos e Resultados}}{115}{chapter.5}
+\contentsline {section}{\numberline {5.1}Modelagem do ambiente}{115}{section.5.1}
+\contentsline {section}{\numberline {5.2}Testes sobre cada regi\IeC {\~a}o}{116}{section.5.2}
+\contentsline {section}{\numberline {5.3}Testes sobre todas regi\IeC {\~o}es}{118}{section.5.3}
+\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
+\contentsline {chapter}{\chapternumberline {6}\MakeTextUppercase {Conclus\IeC {\~a}o}}{128}{chapter.6}
+\contentsline {section}{\numberline {6.1}Dificuldades}{129}{section.6.1}
+\contentsline {section}{\numberline {6.2}Contribui\IeC {\c c}\IeC {\~o}es do Trabalho}{130}{section.6.2}
+\contentsline {section}{\numberline {6.3}Trabalhos Futuros}{131}{section.6.3}
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{\uppercase {Refer\^encias}}{121}{section*.10}
+\contentsline {chapter}{\uppercase {Refer\^encias}}{132}{section*.10}

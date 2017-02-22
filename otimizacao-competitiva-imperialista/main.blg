@@ -6,21 +6,27 @@ A level-1 auxiliary file: abreviaturas.aux
 A level-1 auxiliary file: introducao.aux
 A level-1 auxiliary file: metodologia.aux
 A level-1 auxiliary file: desenvolvimento.aux
+A level-1 auxiliary file: formulacaoambiente.aux
 A level-1 auxiliary file: experimentos.aux
 A level-1 auxiliary file: conclusao.aux
 The style file: abntex2-alf.bst
 Database file #1: abntex2-options.bib
 Database file #2: bibliografia.bib
-I was expecting a `,' or a `}'---line 90 of file bibliografia.bib
+Repeated entry---line 85 of file bibliografia.bib
+ : @article{arango2004spatial
+ :                           ,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 98 of file bibliografia.bib
  :  
  :  publisher={Universidade federal de Itajubá}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Warning--entry type for "jica" isn't style-file defined
---line 167 of file bibliografia.bib
+--line 175 of file bibliografia.bib
+Warning--I didn't find a database entry for "arango2000thesis"
 +---------------------------------------------------------+
 | Estilo bibliográfico abntex2-alf.bst versão v-1.9.6           |
 | Em caso de dúvidas ou problemas com este estilo procure |
 | http://www.abntex.net.br/                               |
 +---------------------------------------------------------+
-(There was 1 error message)
+(There were 2 error messages)

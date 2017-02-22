@@ -1,29 +1,34 @@
 \chapter{Experimentos e Resultados}
 \label{experimentos}
+Neste capítulo, apresenta-se diversos testes sobre a função de previsão, que utiliza-se do ICA para otimizar e buscar os melhores parâmetros de previsão para cada região de quadrículas. É apresentado também a seleção da região e como os dados são modelados afim de inseri-los no P.E.M.D.. São apresentados testes sobre cada região, com o intuito de analisar como cara região pode evoluir e quais os problemas que podem vir a ocorrer durante a previsão de cada região de quadrículas. Por fim são apresentados os testes aplicados sobre todas as regiões e a obtenção do mapa de previsão final. 
 
-Ao fim do processo evolutivo do ICA, que parou por alguma das condições de parada implementadas, obtém-se os atributos do melhor país para se gerar um mapa de previsão futura, que mantém os aspectos de crescimento médio. E então define-se uma região de provável expansão para o mapa matriz, neste caso, partição do mapa matriz, com a aplicação de uma operação semelhante à utilizada na função de avaliação, removendo as partes dos cálculos de erro, mas mantendo o processo de previsão, que faz as convoluções e ponderações para gerar o mapa de previsão final.
+Nesta última etapa os dados são divididos mantendo um histórico para treino e um histórico para testes, de modo que o histórico de mapas para treino será utilizado pelo previsor como se fosse uma busca real de parâmetros, e o histórico para testes fica reservado para comparação e validação do método, que é comparando e analisando com resultados obtidos tanto pelo método proposto que utiliza a função de previsão por ponderações quanto com resultados obtidos pela previsão utilizando o método de tendência linear para previsão do crescimento médio das regiões.
 
-A previsão gerada pelo método proposto pode ser comparada com um modelo estatístico que gera uma previsão sobre a curva de tendência linear também para cada região, de modo que cada região apresente uma taxa de crescimento seguindo a curva de tendência, onde cada quadrícula da região cresce homogeneamente, sem que haja a aplicação de nenhuma heurística, e seja usado apenas o modelo estatístico. Desta forma é possível comparar a precisão do modelo de previsão proposto região por região.
+Uma breve discussão sobre os resultados é apresentada, trazendo imagens e gráficos, enfatizando a comparação entre os métodos de previsão, o proposto, com a função de previsão baseada em ponderação de convoluções e o método de previsão de tendência linear, ambos aplicados sobre as regiões de quadrículas.
 
-\subsection{Modelagem do ambiente}
+%Ao fim do processo evolutivo do ICA, que parou por alguma das condições de parada implementadas, obtém-se os atributos do melhor país para se gerar um mapa de previsão futura, que mantém os aspectos de crescimento médio. E então define-se uma região de provável expansão para o mapa matriz, neste caso, partição do mapa matriz, com a aplicação de uma operação semelhante à utilizada na função de avaliação, removendo as partes dos cálculos de erro, mas mantendo o processo de previsão, que faz as convoluções e ponderações para gerar o mapa de previsão final.
+
+%A previsão gerada pelo método proposto pode ser comparada com um modelo estatístico que gera uma previsão sobre a curva de tendência linear também para cada região, de modo que cada região apresente uma taxa de crescimento seguindo a curva de tendência, onde cada quadrícula da região cresce homogeneamente, sem que haja a aplicação de nenhuma heurística, e seja usado apenas o modelo estatístico. Desta forma é possível comparar a precisão do modelo de previsão proposto região por região.
+
+\section{Modelagem do ambiente}
 \label{Exp:Modelagem do ambiente}
 
-Neste trabalho, os dados foram selecionados utilizando a cidade de Taubaté-SP como região base para a criação dos mapas de quadrículas. Os dados contidos no banco de dados são referentes aos períodos de 2008 a 2015. Tais dados são separados de modo que cada período represente 1 ano, assim existirão inicialmente 8 arquivos de entrada para a aplicação, que transformará estes arquivos em mapas de quadrículas, que por sua vez serão particionados em várias pequenas partições para o processamento pelo ICA. 
+Os dados foram selecionados utilizando a cidade de Taubaté-SP como região base para a criação dos mapas de quadrículas. Os dados contidos no banco de dados são referentes aos períodos de 2008 a 2015. Tais dados são separados de modo que cada período represente 1 ano, assim existirão inicialmente 8 arquivos de entrada para a aplicação, que transformará estes arquivos em mapas de quadrículas, que por sua vez serão particionados em várias pequenas partições para o processamento pelo ICA. 
 
 Para que o método seja validado, devem ser usadas apenas uma porção dos dados para se gerar os países, e então usa-se o restante dos dados reais para se comparar com os dados de previsão computados após a etapa de evolução. Então pode-se separar a validação em duas etapas, sendo a primeira a etapa de treino, a qual se usa o ICA para evoluir os países sobre uma porção dos dados, e a segunda sendo referente à comparação entre os dados reais que não participaram do processo de evolução e os dados de previsão, gerados a partir dos países evoluídos. 
 
-Assim, são selecionados os 5 primeiros anos, de 2008 a 2012, como \emph{nLearn} períodos de treino para o ICA, restando os 3 últimos anos, sendo 2013, 2014 e 2015, como \emph{nTest}, para testar e validar a metodologia de previsão. Neste caso, assim que se termina a etapa de evolução dos indivíduos, obtém-se o melhor indivíduo para aquela partição, e então geram-se 3 previsões seguidas a partir deste país, as quais serão comparadas com os mapas dos períodos reais restantes. A semelhança entre os mapas reais e previstos, devem seguir o crescimento definido pela curva de tendência gerada a partir dos períodos de teste, de modo que a previsão tenha seu crescimento seguindo a média padrão de crescimento entre os anos para que tal previsão seja validada e mais próxima possível do real.
+Assim, são selecionados os 5 primeiros anos, de 2008 a 2012, como \emph{nLearn} períodos de treino para o ICA, restando os 3 últimos anos, sendo 2013, 2014 e 2015, como \emph{nTest}, para testar e validar a metodologia de previsão. Neste caso, assim que se termina a etapa de evolução dos indivíduos, obtém-se o melhor indivíduo para aquela partição, e então geram-se 3 previsões seguidas a partir deste país, as quais serão comparadas com os mapas dos períodos reais restantes. A semelhança entre os mapas reais e previstos, deve seguir o crescimento definido pela curva de tendência gerada a partir dos períodos de teste, de modo que a previsão tenha seu crescimento seguindo a média padrão de crescimento entre os anos para que tal previsão seja validada e mais próxima possível do real.
 
-Os mapas gerados de diversos períodos da cidade de Taubaté estão limitados nas latitudes \(Norte = -22.963715\) e \(Sul = -23.099506\) e nas longitudes \(Leste = -45.493534\) e \(Oeste = -45.674465\). O tamanho para cada lado das quadrículas é de 100 \(m\), resultando em uma área de 100 \(m^2\), sendo que tais áreas englobem aproximadamente de 1 a 4 quarteirões residenciais em média. Assim, os mapas ficam com altura igual a 150 quadrículas e largura igual a 185 quadrículas, o qual nos leva a ter que a região representa um retângulo de 18.5 \(km\) de largura por 15 \(km\) de altura, tendo uma área total de 277.5 \(km^2\). 
+Os mapas gerados de diversos períodos da cidade de Taubaté estão limitados nas latitudes \(Norte = -22.963715\) e \(Sul = -23.099506\) e nas longitudes \(Leste = -45.493534\) e \(Oeste = -45.674465\). O tamanho para cada lado das quadrículas é de 100 \(m\), resultando em uma área de 10000 \(m^2\), sendo que tais áreas englobem aproximadamente de 1 a 4 quarteirões residenciais em média. Assim, os mapas ficam com altura igual a 150 quadrículas e largura igual a 185 quadrículas, o qual nos leva a ter que a região representa um retângulo de 18.5 \(km\) de largura por 15 \(km\) de altura, tendo uma área total de 277.5 \(km^2\). 
 
 Estes mapas ainda são particionados em 15 partes para largura e para altura, gerando 210 partições de 13 x 10 quadrículas, sendo que as últimas 15, referentes às últimas colunas de cada linha sempre tenham dimensões 17 x 10 quadrículas para que não haja perda de informação ou geração de ruído em regiões não que estejam fora da definição \((Norte, Sul)\) e \((Leste, Oeste)\). Como cada quadrícula possui lado igual a 100 \(m\), tem-se que cada partição irá abranger uma área de 1300\(m\) X 1000\(m\) = 1300000\(m^2\) = 1.3\(km^2\) para as 210 quadrículas e 1700\(m\) X 1000\(m\) = 1700000\(m^2\) = 1.7\(km^2\)  para as 15 quadrículas restantes.
 
 O tamanho das quadrículas foi diminuído, segundo \citeauthor{willis2002spatial}, o ideal é usar o tamanho das quadrículas como sendo \(\frac{1}{4} milha\), o que é aproximadamente 400\(m\) (\(\frac{1}{4} milha = 402.3360m\)), a fim de se aumentar a resolução de cada partição para que esta possa captar características mais bem definidas sempre que efetuar a metodologia de previsão sobre a partição. Caso fosse utilizado o tamanho da quadrícula original, igual a 400\(m\), cada partição seria composta por aproximadamente \(3 \times 2\) quadrículas, diminuindo assim a resolução de cada partição. Esta diminuição tem como intuito fazer com que cada quadrícula represente aproximadamente de 1 a 2 quarteirões de tamanho médio.
 
-\subsection{Testes sobre cada região}
+\section{Testes sobre cada região}
 \label{Exp:Testes sobre cada região}
 
-Não se foi definida uma relação entre o tamanho de cada partição e o tamanho da máscara de convolução, porém espera-se que cada partição seja pelo menos 2 vezes maior que a matriz de convolução tanto em largura quanto em altura para que as máscaras possam gerar mapas que possuam características da região abordada nesta região de uma forma aproximada sem que os valores mais periféricos da máscara fiquem, em sua maior parte durante o processamento, para fora da região a ser analisada. 
+Não foi definida uma relação entre o tamanho de cada partição e o tamanho da máscara de convolução. Porém espera-se que cada partição seja pelo menos 2 vezes maior que a matriz de convolução tanto em largura quanto em altura. Assim as máscaras podem gerar mapas que possuam características da região abordada nesta região de uma forma aproximada sem que os valores mais periféricos da máscara fiquem, em sua maior parte durante o processamento, para fora da região a ser analisada. 
 
 Sendo assim máscaras de ordem 3, 5 e 7 podem ser usadas para gerar as previsões para este caso, onde tem-se que a menor partição é de \(13 \times 10\) quadrículas, já as máscaras  de ordem 9, estão no limite entre o que se considera previsão com erro aceitável, podendo apresentar resultados de previsão não aceitáveis, e as máscaras de ordem 11, 13, etc. apresentam um resultado mais agressivo (mesmo aumentando o número de ponderações), já que alguns de seus valores mais periféricos ficarão para fora da imagem por muitos ciclos do processo de convolução, e assim, o ICA é incapaz de evoluir seus valores para alguma característica da região, de modo que a previsão de algumas regiões resulte em uma previsão irreal, \emph{estourando} a previsão de crescimento da região, tal que estes valores que ficam durante muitos ciclos de fora da região sejam em sua maior parte aleatórios, aplicando as características inexistentes na região de uma forma muito intensa em pontos mais distantes, gerando muito ruído no processo de previsão. 
 
@@ -45,10 +50,13 @@ Uma solução para este problema seria alterar o algoritmo de convolução para 
 	\label{fig:convApvsTr}
 \end{figure}
 
-A opção de utilizar esta forma de convolução não se aplicaria para a previsão, pois estaria-se perdendo informação e aumentando o erro da previsão de uma forma drástica, sendo que os valores das bordas de cada região seriam 0.
+A opção de utilizar esta forma de convolução não se aplicaria para a previsão, pois estaria-se perdendo informação e aumentando o erro da previsão de uma forma drástica, sendo que os valores das bordas de cada região seriam iguais a zero.
 
 
-\subsection{Testes sobre todas regiões}
+
+
+
+\section{Testes sobre todas regiões}
 \label{Exp:Testes sobre todas regiões}
 
 
@@ -108,33 +116,42 @@ Para a segunda configuração, foi implementada uma condição de parada que lev
 \label{alg:FpCP}
 \end{algorithm}
 
-Observa-se no algoritmo da condição de parada que ela só será atingida quando atingir 10 vezes o número de máximo de décadas estipulado ou quando o custo for menor que \emph{minC} e, inclusivamente, o número de décadas for maior que o número máximo de décadas estipulado. Assim, garante-se que o algoritmo só irá parar segundo estas condições, tal que considera-se importante atingir o valor \emph{maxD} de décadas mesmo se o custo for menor que o valor definido em  \emph{minC}, e ainda tenta-se atingir \emph{minC} até 10 vezes o valor estipulado em \emph{maxD}. É importante mencionar que se um país chegar ao custo zero, o ICA para imediatamente, por este ser o melhor país (melhor solução a ser encontrada), e ainda, esta condição não é avaliada junto das condições de parada, mas sim antes de começar tal avaliação.
+Observa-se no algoritmo da condição de parada que ela só será atingida quando atingir 10 vezes o número de máximo de décadas estipulado ou quando o custo for menor que \emph{minC} e o número de décadas for maior que o número máximo de décadas estipulado. Assim, garante-se que o algoritmo só irá parar segundo estas condições, tal que considera-se importante atingir o valor \emph{maxD} de décadas mesmo se o custo for menor que o valor definido em  \emph{minC}, e ainda tenta-se atingir \emph{minC} até 10 vezes o valor estipulado em \emph{maxD}. É importante mencionar que se um país chegar ao custo zero, o ICA para imediatamente, por este ser o melhor país (melhor solução a ser encontrada), e ainda, esta condição não é avaliada junto das condições de parada, mas sim antes de começar tal avaliação.
 
 Esta segunda configuração não difere muito da primeira em questão dos parâmetros do ICA, basicamente insere-se esta nova condição de parada, que fica como:
 
 \begin{itemize}
-\item Vetor de atributos do país:
-
+	\item Vetor de atributos do país:
+	
 	\begin{itemize}
-	\item mesmos valores;
+		\item Os valores de fator estão limitados em [-50,50];
+		\item Os valores das matrizes de convolução são estão limitados em [-100,100];
 	\end{itemize}
-
-\item valores das propriedades do ICA:
-
+	
+	\item valores das propriedades do ICA:
+	
 	\begin{itemize}
-	\item mesmos valores;
-	\item Adicionar condição de parada 	padrão por número máximo de décadas: Não; 
-	\item Usar condição de parada por década e Custo: Sim;
-	\item Condição de parada adicional (por década e custo):
+		\item Beta: 2;
+		\item Taxa de revolução: 0.99;
+		\item Taxa de decaimento de revolução: 0.999999;
+		\item Taxa de impérios iniciais: 15\%.
+		\item É Paralelo? sim;
+		\item População inicial: 64;
+		\item Máximo de décadas: 2048;
+		\item Modo de movimento: Combinado(Refinado + Visão Imperial Distorcida);
+		\item Adicionar condição de parada 	padrão por número máximo de décadas: Não; 
+		\item Usar condição de parada por década e Custo: Sim;
+		\item Condição de parada adicional (por década e custo):
 
 		\begin{itemize}
-		\item Custo mínimo = 50;
-		\item Máximo de décadas = 2048;
+			\item Custo mínimo = 50;
+			\item Máximo de décadas = 2048;
 		\end{itemize}
 
 	\end{itemize}
-
+	
 \end{itemize}
+
 
 Geralmente, os países não convergem para custo 0, mas geram mapas com uma diferença mínima entre os períodos, de modo que este país quando utilizado para fazer uma previsão futura, seguirá o padrão de crescimento, elevando os valores de cada quadrícula de acordo com a função de testes descrita, que neste caso é a própria função que faz a previsão da expansão urbana, que usa o país como solução ótima aplicada sobre os dados, operando a ponderação das convoluções e gerando um mapa final de previsão.
 
@@ -146,18 +163,43 @@ Ao considerar cada partição como um bloco fechado, que cresce em densidade dur
 
 O modelo proposto, então apresenta uma solução para que se possa obter tal nível de precisão, de modo que os blocos, tenham um crescimento que siga tal linha de tendência, mesmo que a função de avaliação não os considere, e que além disso, apresentem uma solução que leve em consideração os pontos contidos no bloco, suas posições, intensidades e características regionais, dentro deste bloco, e portanto possibilitando a construção de um mapa de quadrículas disposto bidimensionalmente em forma de uma imagem, onde cada quadrícula pode ser representada por um pixel dessa imagem. Assim a análise de previsão desta metodologia utiliza-se de dois parâmetros para comparar a previsão, sendo o crescimento geral da região durante os períodos e o valor absoluto de acerto ponto a ponto.
 
-Dentro deste cenário foram efetuados diversos testes, variando o tamanho da matriz de convolução, e a quantidade de ponderações. Foi definido que o número de ponderações igual a 3 é suficiente para prover suavidade e precisão no mapa de previsão gerado em relação aos métodos convencionais para geração do mapa de previsão. O uso de apenas um fator e uma matriz de convolução pode resultar algumas vezes, em um mapa de previsão semelhante ao modelo estatístico, que usa a curva de tendência (neste caso qualquer que seja, linear, exponencial, polinomial etc.) referente ao crescimento da região, mas não é tão preciso quando refere-se à constituição (forma e intensidade dos pontos) do mapa, relativo a quantidade de pontos, seja ela percentual ou absoluta, acertados pela previsão. O ponto negativo é que quanto mais ponderações houver, mais aumenta o uso de processamento, colocando mais precisamente, a quantidade de convoluções que aumenta de acordo com o número de ponderações, sendo que a operação de convolução é o processo mais pesado que ocorre durante a avaliação, que por sua vez aumenta o tempo de execução de todo o processo de avaliação.
+Dentro deste cenário foram efetuados diversos testes, variando o tamanho da matriz de convolução, e a quantidade de ponderações. Foi definido que o número de ponderações igual a 3 é suficiente para prover suavidade e precisão no mapa de previsão gerado em relação aos métodos convencionais para geração do mapa de previsão. O uso de apenas um fator e uma matriz de convolução pode resultar, algumas vezes, em um mapa de previsão semelhante ao modelo estatístico, que usa a curva de tendência (neste caso qualquer que seja, linear, exponencial, polinomial etc.) referente ao crescimento da região, mas não é tão preciso quando refere-se à constituição (forma e intensidade dos pontos) do mapa, relativo a quantidade de pontos, seja ela percentual ou absoluta, acertados pela previsão. O ponto negativo é que quanto mais ponderações houver, mais aumenta o uso de processamento, colocando mais precisamente, a quantidade de convoluções que aumenta de acordo com o número de ponderações, sendo que a operação de convolução é o processo mais pesado que ocorre durante a avaliação, que por sua vez aumenta o tempo de execução de todo o processo de avaliação.
 
-O aumento da ordem da matriz de convolução aumenta drasticamente o tempo de processamento, porém traz resultados mais interessantes. Quando seleciona-se o tamanho mínimo de 3 para a ordem da matriz de convolução, os resultados apresentados já são satisfatórios e apresentam uma precisão no acerto sobre o crescimento geral da região e sobre a quantidade de acertos ponto a ponto melhor que a curva de tendência aplicada sobre a mesma região. Ao aumentar a ordem da matriz de convolução para 5, tem-se uma melhora no erro do crescimento da região em relação à matriz de ordem 3, porém aumenta-se sutilmente o erro da previsão ponto a ponto. Aumentando a ordem da matriz para 7, algumas regiões passam a apresentar um comportamento atípico, fazendo com que o resultado final de previsão exploda para valores de erros, tanto no crescimento regional geral quanto no ponto a ponto, muito maiores que os apresentados pelo modelo estatístico, tornando o mapa final de previsão muito ruidoso e impossível de ser usado para fazer qualquer tipo de análise. A Figura \ref{fig:allResults} mostra uma comparação entre os valores reais, os resultados gerados pela metodologia de previsão proposta, usando matrizes de convolução 3x3, 5x5, 7x7, com o modelo estatístico, para os anos de 2013, 2014 e 2015.
+O aumento da ordem da matriz de convolução aumenta drasticamente o tempo de processamento, porém traz resultados mais interessantes. Quando seleciona-se o tamanho mínimo de 3 para a ordem da matriz de convolução, os resultados apresentados já são satisfatórios e apresentam uma precisão no acerto sobre o crescimento geral da região e sobre a quantidade de acertos ponto a ponto melhor que a curva de tendência aplicada sobre a mesma região. Ao aumentar a ordem da matriz de convolução para 5, tem-se uma melhora no erro do crescimento da região em relação à matriz de ordem 3, porém aumenta-se sutilmente o erro da previsão ponto a ponto. Aumentando a ordem da matriz para 7, algumas regiões passam a apresentar um comportamento atípico, fazendo com que o resultado final de previsão exploda para valores de erros, tanto no crescimento regional geral quanto no ponto a ponto, muito maiores que os apresentados pelo modelo estatístico, tornando o mapa final de previsão muito ruidoso e impossível de ser usado para fazer qualquer tipo de análise. As Figuras \ref{fig:Results3x3},\ref{fig:Results5x5},\ref{fig:Results7x7} e \ref{fig:ResultsCT} mostram uma comparação entre os valores reais com os resultados gerados pela metodologia de previsão proposta, usando matrizes de convolução 3x3, 5x5, 7x7 e com o modelo estatístico (Linha de tendência), para os anos de 2013, 2014 e 2015, sendo que os anos base para prever os mapas 2013',2014' e 2015' foram 2012 (real), 2013' (previsto) e 2014' (previsto) respectivamente para ambos os métodos.
 
-\begin{figure}[h]
+%\begin{figure}[h]
+%	\centering	
+ %   \includegraphics[scale=0.7]{Figuras/AllResults.png}
+%	\caption{Apresentação dos mapas reais de 2013, 2014 e 2015 comparando com a previsão por linha de tendência e com o método proposto para matrizes de convolução de ordem 3, 5 e 7}
+%	\label{fig:allResults}
+%\end{figure}
+\begin{figure}[H]
 	\centering	
-    \includegraphics[scale=0.7]{Figuras/AllResults.png}
-	\caption{Apresentação dos mapas reais de 2013, 2014 e 2015 comparando com a previsão por linha de tendência e com o método proposto para matrizes de convolução de ordem 3, 5 e 7}
-	\label{fig:allResults}
+	\includegraphics[scale=0.29
+	]{Figuras/3x3vsReal.png}
+	\caption{Apresentação dos mapas reais de 2013, 2014 e 2015 comparando com a previsão do método proposto para matrizes de convolução de ordem 3.}
+	\label{fig:Results3x3}
+\end{figure}
+\begin{figure}[H]
+	\centering	
+	\includegraphics[scale=0.29]{Figuras/5x5vsReal.png}
+	\caption{Apresentação dos mapas reais de 2013, 2014 e 2015 comparando com a previsão do método proposto para matrizes de convolução de ordem 5. }
+	\label{fig:Results5x5}
+\end{figure}
+\begin{figure}[H]
+	\centering	
+	\includegraphics[scale=0.29]{Figuras/7x7vsReal.png}
+	\caption{Apresentação dos mapas reais de 2013, 2014 e 2015 comparando com a previsão do método proposto para matrizes de convolução de ordem 7.}
+	\label{fig:Results7x7}
+\end{figure}
+\begin{figure}[H]
+	\centering	
+	\includegraphics[scale=0.29]{Figuras/CTvsReal.png}
+	\caption{Apresentação dos mapas reais de 2013, 2014 e 2015 comparando com a previsão por linha de tendência.}
+	\label{fig:ResultsCT}
 \end{figure}
 
-Dois parâmetros foram numericamente comparados: o erro sobre a taxa de crescimento da região prevista (Eg), e a precisão da previsão de cada célula da região (Epp). A tabela \ref{tbl:forecastErrors} mostra faz uma comparação entre os 4 métodos (proposto 3x3, proposto 5x5, proposto 7x7 e curva de tendência), onde é possível observar que o método proposto apresenta uma precisão muito semelhante em relação à linha de tendência quando compara-se o crescimento geral da região, e apresenta ainda, na previsão ponto a ponto (sobre cada célula ou \emph{pixel}) valores notavelmente melhores. Na comparação deste segundo parâmetro é possível observar ainda que ao aumentar-se a ordem da matriz de convolução não necessariamente piora-se a previsão, porém é importante notar que este aumento pode vir a extrapolar a previsão e fazer com que a precisão seja invalidada, apresentando uma previsão "estourada" como fora visto na Figura \ref{fig:ForecastingSpike}. Os valores da matriz 5x5 apresentam-se um pouco piores, devido exatamente à extrapolação na previsão do período de 2015, sendo que na Figura \ref{fig:allResults} é possível observar alguns pontos de crescimento nunca vieram a ocorrer em determinadas regiões no mapa real ou nos mapas previstos usando as matrizes de convolução de ordem 3 e 7. 
+Dois parâmetros foram numericamente comparados: o erro sobre a taxa de crescimento da região prevista (Eg), e a precisão da previsão de cada célula da região (Epp). A tabela \ref{tbl:forecastErrors} mostra uma comparação entre os 4 métodos (proposto 3x3, proposto 5x5, proposto 7x7 e curva de tendência), onde é possível observar que o método proposto apresenta uma precisão muito semelhante em relação à linha de tendência quando compara-se o crescimento geral da região, e apresenta ainda, na previsão ponto a ponto (sobre cada célula ou \emph{pixel}) valores notavelmente melhores. Na comparação deste segundo parâmetro é possível observar ainda que ao aumentar-se a ordem da matriz de convolução não necessariamente piora-se a previsão, porém é importante notar que este aumento pode vir a extrapolar a previsão e fazer com que a precisão seja invalidada, apresentando uma previsão "estourada" como fora visto na Figura \ref{fig:ForecastingSpike}. Os valores da matriz 5x5 apresentam-se um pouco piores, devido exatamente à extrapolação na previsão do período de 2015, sendo que na Figura \ref{fig:allResults} é possível observar alguns pontos de crescimento nunca vieram a ocorrer em determinadas regiões no mapa real ou nos mapas previstos usando as matrizes de convolução de ordem 3 e 7. 
 
 \begin{table}[h]
 	\centering
@@ -183,4 +225,12 @@ Dois parâmetros foram numericamente comparados: o erro sobre a taxa de crescime
 	Nota: Validação dos resultados apresentando os erros de crescimento (Eg e Eg\%) e por pixel (Epp e Epp\%) entre o método proposto com as matrizes de convolução de ordem 3, 5 e 7 e Linha de Tendência para as previsões de 2013, 2014 e 2015
 \end{table}
 
+
+É possível observar duas grandes características nos resultados apresentados na Tabela \ref{tbl:forecastErrors}, sendo a primeira característica relacionada ao crescimento global, em que a função de previsão proposta apresentou uma quantidade pouco significativa a mais de erro em relação à função de previsão que usa a linha de tendência. 
+
+Ao se comparar os resultados da Tabela \ref{tbl:forecastErrors} com o que foi apresentado na Figura \ref{fig:allResults} no quesito de crescimento global da região, nota-se com discrepância, que apesar do método proposto possuir uma quantidade um pouco maior de erro, suas regiões seguem mais fielmente o crescimento localizado, ou pixel a pixel, o que nos leva à segunda grande característica, que é relacionada à quantidade de erro apresentada pelo método de previsão usando a linha de tendência ter apresentado uma taxa de acerto muito menor do que a metodologia proposta, sendo facilmente notado nas imagens comparativas.
+
+Uma sutil característica é relacionada à ordem da matriz de convolução utilizada pela função de previsão, que apesar de aumentado, não elevou drasticamente os erros tanto relacionados ao crescimento global quanto os erros localizados, pixel a pixel, demonstrando que a função de previsão é capaz de levar em consideração tantos indivíduos quanto se queira para a definição do crescimento de uma dada quadrícula. Vale ressaltar ainda, que em testes anteriores o aumento da ordem da matriz de convolução aumenta a chance da previsão de uma região explodir, e quando a ordem da matriz de convolução passa para além do tamanho da região, aumenta-se agressivamente as chances desta região explodir, prejudicando a previsão final.
+
+Ressalta-se ainda que ambas as metodologias de previsão, proposta e por linha de tendência, foram aplicadas sobre todas as regiões dos mapas base, 2012, 2013',2014', para gerar os mapas de previsão 2013', 2014' e 2015' respectivamente. Tendo em vista que, para ambos os métodos, cada região possui parâmetros de previsão os quais geram uma previsão da região em questão independentemente das demais, formando então um mapa composto por diversas regiões previstas como sendo o mapa de previsão final. 
 
